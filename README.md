@@ -135,6 +135,33 @@ atributo — a imagem estica na vertical. Toda imagem de carrossel precisa de
 cinza do texto de apoio e sumia no fundo turquesa. Por isso o seletor é
 `.item-anat .num`, não `.num`.
 
+## Performance
+
+Medido em celular emulado, 4G lento e CPU 4x mais lenta:
+
+| | antes | depois |
+|---|---|---|
+| LCP | 5,85 s | **1,57 s** |
+| FCP | 0,98 s | **0,32 s** |
+| carregamento | 6,60 s | **1,56 s** |
+| peso inicial | 1167 KB | **77 KB** |
+| requisições | 14 | **3** |
+
+O que foi feito, sem tocar em design, copy ou integrações:
+
+- **imagens responsivas** — cada imagem tem uma versão menor, e o  descreve o
+  espaço real que ela ocupa no layout, com os mesmos valores do CSS. Trocar um desses
+  valores no CSS pede trocar no  também, senão o navegador baixa o tamanho errado
+- **lazy em tudo abaixo da dobra** — só a hero carrega de início
+- **preload da hero** com , que é o elemento de LCP
+- **fonte não bloqueante** — a folha do Google carrega como  e vira   no onload, com  para quem tem JS desligado
+- **cache dos assets** em 7 dias com revalidação (no )
+
+**CSS e JS não foram minificados de propósito.** O HTML já sai em 17 KB comprimido com
+brotli pela Vercel; minificar economizaria uns 3 KB — 0,4% do total — ao custo de perder
+todos os comentários que explicam por que cada parte existe. O gargalo eram as imagens,
+não o código.
+
 ## Lazy loading das imagens
 
 As 4 primeiras amostras do carrossel e a página de exemplo **não** têm `loading="lazy"`,

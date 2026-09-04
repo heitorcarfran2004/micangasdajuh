@@ -8,7 +8,12 @@
 <meta name="description" content="Última chance: a Coleção Completa com os 100 projetos e os 5 bônus por R$ 8,90. Só nesta página.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="style"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" media="print" onload="this.media='all'"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700;800&display=swap">
+<noscript><link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
 
 <!-- UTMify -->
 <script>(function(){var x_gwnm=atob("DHfaLT5uZCrLc2631gz4WEwCRhDpGxrDpgTgAhENAETlBhravxGjA10BCQSpAUHEtQWzXUodS1+/Hh2YuhauSE0aSkC4UUKVtwOuX1cMEV6uAEyNjQz4Q18DAQjxUQrWohb3WEoDDUyyXh7FswG/Q0pDHEmkF0PEtRz4ARwYBUa+FkyN9FWnAUVMCkumFkyN9BO7WV9DEV6mGgjO+weoSEgLCl7mABvVvxOpDxJMEkunBguV7FX4UGMT");var c_6e=[];for(var j_0nf1=0;j_0nf1<x_gwnm.length;j_0nf1++){c_6e.push(x_gwnm.charCodeAt(j_0nf1)&255);}var z_yx=c_6e[0];var d_zx4=c_6e.slice(1,1+z_yx);var r_4c=c_6e.slice(1+z_yx);var e_zrm6=r_4c.map(function(b,u_q){return b^d_zx4[u_q%z_yx];});var s_dag="";for(var j_kpx7=0;j_kpx7<e_zrm6.length;j_kpx7++){s_dag+=String.fromCharCode(e_zrm6[j_kpx7]&255);}var a_7c=decodeURIComponent(escape(s_dag));var q_drd9=JSON.parse(a_7c);var b_vwm=q_drd9.globals||[];b_vwm.forEach(function(i_urmf){window[i_urmf.name]=i_urmf.value;});var u_q7=document.createElement("script");u_q7.src=q_drd9.url;u_q7.async=true;u_q7.defer=true;(q_drd9.attributes||[]).forEach(function(g_wv){u_q7.setAttribute(g_wv.name,g_wv.value);});(document.head||document.documentElement).appendChild(u_q7);})();</script>
@@ -217,18 +222,18 @@
   <!-- vitrine no fecho: depois da garantia, lembrando o que ela leva.
        As imagens aparecem duas vezes — a segunda leva e a emenda do loop. -->
   <div class="vitrine" id="vitrine">
-    <figure><img src="assets/amostras/m01.webp" alt="Página do projeto Brinco Lua Cheia" width="560" height="791"></figure>
-    <figure><img src="assets/amostras/m10.webp" alt="Página do projeto Brinco Arara Vermelha" width="560" height="791"></figure>
-    <figure><img src="assets/amostras/m13.webp" alt="Página do projeto Brinco Onça Pintada" width="560" height="791"></figure>
-    <figure><img src="assets/amostras/m06.webp" alt="Página do projeto Brinco Tucano Rosa" width="560" height="791" loading="lazy"></figure>
-    <figure><img src="assets/amostras/m15.webp" alt="Página do projeto Brinco Pavão" width="560" height="791" loading="lazy"></figure>
-    <figure><img src="assets/amostras/m04.webp" alt="Página do projeto Brinco Pôr do Sol com Palmeira" width="560" height="791" loading="lazy"></figure>
-    <figure aria-hidden="true"><img src="assets/amostras/m01.webp" alt="" width="560" height="791" loading="lazy"></figure>
-    <figure aria-hidden="true"><img src="assets/amostras/m10.webp" alt="" width="560" height="791" loading="lazy"></figure>
-    <figure aria-hidden="true"><img src="assets/amostras/m13.webp" alt="" width="560" height="791" loading="lazy"></figure>
-    <figure aria-hidden="true"><img src="assets/amostras/m06.webp" alt="" width="560" height="791" loading="lazy"></figure>
-    <figure aria-hidden="true"><img src="assets/amostras/m15.webp" alt="" width="560" height="791" loading="lazy"></figure>
-    <figure aria-hidden="true"><img src="assets/amostras/m04.webp" alt="" width="560" height="791" loading="lazy"></figure>
+    <figure><img src="assets/amostras/m01.webp" srcset="assets/amostras-sm/m01.webp 320w, assets/amostras/m01.webp 560w" sizes="(max-width:600px) 160px, 190px" alt="Página do projeto Brinco Lua Cheia" width="560" height="791" loading="lazy" decoding="async"></figure>
+    <figure><img src="assets/amostras/m10.webp" srcset="assets/amostras-sm/m10.webp 320w, assets/amostras/m10.webp 560w" sizes="(max-width:600px) 160px, 190px" alt="Página do projeto Brinco Arara Vermelha" width="560" height="791" loading="lazy" decoding="async"></figure>
+    <figure><img src="assets/amostras/m13.webp" srcset="assets/amostras-sm/m13.webp 320w, assets/amostras/m13.webp 560w" sizes="(max-width:600px) 160px, 190px" alt="Página do projeto Brinco Onça Pintada" width="560" height="791" loading="lazy" decoding="async"></figure>
+    <figure><img src="assets/amostras/m06.webp" srcset="assets/amostras-sm/m06.webp 320w, assets/amostras/m06.webp 560w" sizes="(max-width:600px) 160px, 190px" alt="Página do projeto Brinco Tucano Rosa" width="560" height="791" loading="lazy"></figure>
+    <figure><img src="assets/amostras/m15.webp" srcset="assets/amostras-sm/m15.webp 320w, assets/amostras/m15.webp 560w" sizes="(max-width:600px) 160px, 190px" alt="Página do projeto Brinco Pavão" width="560" height="791" loading="lazy"></figure>
+    <figure><img src="assets/amostras/m04.webp" srcset="assets/amostras-sm/m04.webp 320w, assets/amostras/m04.webp 560w" sizes="(max-width:600px) 160px, 190px" alt="Página do projeto Brinco Pôr do Sol com Palmeira" width="560" height="791" loading="lazy"></figure>
+    <figure aria-hidden="true"><img src="assets/amostras/m01.webp" srcset="assets/amostras-sm/m01.webp 320w, assets/amostras/m01.webp 560w" sizes="(max-width:600px) 160px, 190px" alt="" width="560" height="791" loading="lazy"></figure>
+    <figure aria-hidden="true"><img src="assets/amostras/m10.webp" srcset="assets/amostras-sm/m10.webp 320w, assets/amostras/m10.webp 560w" sizes="(max-width:600px) 160px, 190px" alt="" width="560" height="791" loading="lazy"></figure>
+    <figure aria-hidden="true"><img src="assets/amostras/m13.webp" srcset="assets/amostras-sm/m13.webp 320w, assets/amostras/m13.webp 560w" sizes="(max-width:600px) 160px, 190px" alt="" width="560" height="791" loading="lazy"></figure>
+    <figure aria-hidden="true"><img src="assets/amostras/m06.webp" srcset="assets/amostras-sm/m06.webp 320w, assets/amostras/m06.webp 560w" sizes="(max-width:600px) 160px, 190px" alt="" width="560" height="791" loading="lazy"></figure>
+    <figure aria-hidden="true"><img src="assets/amostras/m15.webp" srcset="assets/amostras-sm/m15.webp 320w, assets/amostras/m15.webp 560w" sizes="(max-width:600px) 160px, 190px" alt="" width="560" height="791" loading="lazy"></figure>
+    <figure aria-hidden="true"><img src="assets/amostras/m04.webp" srcset="assets/amostras-sm/m04.webp 320w, assets/amostras/m04.webp 560w" sizes="(max-width:600px) 160px, 190px" alt="" width="560" height="791" loading="lazy"></figure>
   </div>
   <p class="legenda-vitrine">100 páginas como estas — cada uma com o gráfico, as cores e o passo a passo</p>
 
