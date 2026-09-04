@@ -60,14 +60,14 @@
     margin:0 auto}
 
   /* vitrine — carrossel que desliza sozinho, igual ao da index */
-  .vitrine{display:flex;gap:12px;overflow-x:auto;padding-bottom:6px;
+  .vitrine{display:flex;gap:12px;overflow-x:auto;padding-bottom:6px;margin-top:4px;
     scrollbar-width:none;-webkit-overflow-scrolling:touch}
   .vitrine::-webkit-scrollbar{display:none}
   .vitrine figure{flex:0 0 clamp(150px,40vw,190px);margin:0}
   .vitrine img{width:100%;height:auto;border-radius:12px;border:1px solid var(--borda);
     background:#fff;box-shadow:0 8px 20px rgba(18,112,124,.12)}
   .legenda-vitrine{text-align:center;font-size:13px;color:var(--cinza);
-    margin:12px auto 0;max-width:440px;line-height:1.5}
+    margin:12px auto 0;max-width:440px;line-height:1.5;padding-bottom:8px}
 
   /* card da oferta */
   .card{background:#fff;border:2px solid var(--coral);border-radius:22px;
@@ -159,23 +159,10 @@
     <p>Antes de sair, liberamos uma condição única da <b>Coleção Completa</b>. Ela não aparece em nenhum outro lugar do site — e some quando você fechar esta página.</p>
   </div>
 
-  <!-- prova visual antes do preço: a pessoa vê o que leva antes de ver quanto custa.
-       As imagens aparecem duas vezes — a segunda leva é a emenda do loop. -->
-  <div class="vitrine" id="vitrine">
-    <figure><img src="assets/amostras/m01.webp" alt="Página do projeto Brinco Lua Cheia" width="560" height="791"></figure>
-    <figure><img src="assets/amostras/m10.webp" alt="Página do projeto Brinco Arara Vermelha" width="560" height="791"></figure>
-    <figure><img src="assets/amostras/m13.webp" alt="Página do projeto Brinco Onça Pintada" width="560" height="791"></figure>
-    <figure><img src="assets/amostras/m06.webp" alt="Página do projeto Brinco Tucano Rosa" width="560" height="791" loading="lazy"></figure>
-    <figure><img src="assets/amostras/m15.webp" alt="Página do projeto Brinco Pavão" width="560" height="791" loading="lazy"></figure>
-    <figure><img src="assets/amostras/m04.webp" alt="Página do projeto Brinco Pôr do Sol com Palmeira" width="560" height="791" loading="lazy"></figure>
-    <figure aria-hidden="true"><img src="assets/amostras/m01.webp" alt="" width="560" height="791" loading="lazy"></figure>
-    <figure aria-hidden="true"><img src="assets/amostras/m10.webp" alt="" width="560" height="791" loading="lazy"></figure>
-    <figure aria-hidden="true"><img src="assets/amostras/m13.webp" alt="" width="560" height="791" loading="lazy"></figure>
-    <figure aria-hidden="true"><img src="assets/amostras/m06.webp" alt="" width="560" height="791" loading="lazy"></figure>
-    <figure aria-hidden="true"><img src="assets/amostras/m15.webp" alt="" width="560" height="791" loading="lazy"></figure>
-    <figure aria-hidden="true"><img src="assets/amostras/m04.webp" alt="" width="560" height="791" loading="lazy"></figure>
+
+
   </div>
-  <p class="legenda-vitrine">100 páginas como estas — cada uma com o gráfico, as cores e o passo a passo</p>
+
 
   <div class="card">
     <span class="selo">Oferta exclusiva de saída</span>
@@ -226,6 +213,27 @@
       <p>Baixe, imprima e faça um projeto. Se em 7 dias você achar que não era para você, me manda um e-mail e eu devolvo os R$ 8,90. Sem perguntas.</p>
     </div>
   </div>
+
+
+
+
+  <!-- vitrine no fecho: depois da garantia, lembrando o que ela leva.
+       As imagens aparecem duas vezes — a segunda leva e a emenda do loop. -->
+  <div class="vitrine" id="vitrine">
+    <figure><img src="assets/amostras/m01.webp" alt="Página do projeto Brinco Lua Cheia" width="560" height="791"></figure>
+    <figure><img src="assets/amostras/m10.webp" alt="Página do projeto Brinco Arara Vermelha" width="560" height="791"></figure>
+    <figure><img src="assets/amostras/m13.webp" alt="Página do projeto Brinco Onça Pintada" width="560" height="791"></figure>
+    <figure><img src="assets/amostras/m06.webp" alt="Página do projeto Brinco Tucano Rosa" width="560" height="791" loading="lazy"></figure>
+    <figure><img src="assets/amostras/m15.webp" alt="Página do projeto Brinco Pavão" width="560" height="791" loading="lazy"></figure>
+    <figure><img src="assets/amostras/m04.webp" alt="Página do projeto Brinco Pôr do Sol com Palmeira" width="560" height="791" loading="lazy"></figure>
+    <figure aria-hidden="true"><img src="assets/amostras/m01.webp" alt="" width="560" height="791" loading="lazy"></figure>
+    <figure aria-hidden="true"><img src="assets/amostras/m10.webp" alt="" width="560" height="791" loading="lazy"></figure>
+    <figure aria-hidden="true"><img src="assets/amostras/m13.webp" alt="" width="560" height="791" loading="lazy"></figure>
+    <figure aria-hidden="true"><img src="assets/amostras/m06.webp" alt="" width="560" height="791" loading="lazy"></figure>
+    <figure aria-hidden="true"><img src="assets/amostras/m15.webp" alt="" width="560" height="791" loading="lazy"></figure>
+    <figure aria-hidden="true"><img src="assets/amostras/m04.webp" alt="" width="560" height="791" loading="lazy"></figure>
+  </div>
+  <p class="legenda-vitrine">100 páginas como estas — cada uma com o gráfico, as cores e o passo a passo</p>
 
 </div>
 
