@@ -8,8 +8,8 @@ Página de vendas do entregável em `entregaveis/50-brincos-micanga`.
 
 1. ~~UTMify~~ — **feito.** Script deste produto instalado no `<head>`, carregando
    `cdn.utmify.com.br/scripts/utms/latest.js`.
-2. **Checkout** — trocar os dois links. Procure por `TROCAR-CHECKOUT` no `index.html`:
-   são TRÊS: Essencial (R$ 10), Completa (R$ 25,90) e o do popup de upsell (R$ 19,90).
+2. ~~Checkout~~ — **feito.** Os quatro links do ggcheckout instalados:
+   Essencial R$ 10 · Completa R$ 25,90 · popup R$ 16,90 · saída R$ 8,90.
 3. ~~Depoimentos~~ — **feito.** São 5 prints reais de conversa, de alunas que receberam
    o material para testar em 03/09/2026, em `assets/depoimentos/`.
 
@@ -38,12 +38,15 @@ barra de urgência · hero · dores · desejo (usar/presentear/vender/relaxar) �
 
 ## Popup de upsell
 
-Clicar no plano de R$ 10 abre um modal oferecendo a Coleção Completa por **R$ 19,90**
-(em vez de R$ 25,90). Quem recusa segue para o checkout do básico normalmente.
+Clicar no plano de R$ 10 abre um modal oferecendo a Coleção Completa por **R$ 16,90**
+(em vez de R$ 25,90) — R$ 6,90 a mais que o básico. Quem recusa segue para o checkout
+do básico normalmente.
 
-São **três** links de checkout, não dois: básico, completo e o preço só do popup.
-Procure por `TROCAR-CHECKOUT` — o do popup é `TROCAR-CHECKOUT-UPSELL` e precisa de um
-produto/oferta próprio no gateway, senão a promessa do popup não se cumpre no pagamento.
+O botão do Essencial está fora do seletor `a[href*=ggcheckout]` que marca
+`__indoParaCheckout`: ele é um link de checkout, mas o clique só abre o popup. Sem essa
+exceção, quem visse o popup e desistisse sairia da página com o back redirect desarmado.
+
+São **quatro** ofertas no gateway, uma por preço — R$ 10, R$ 25,90, R$ 16,90 e R$ 8,90.
 
 O plano de R$ 10 leva **só o Bônus 1** (Tabela de Conversão de Cores); os 5 ficam no
 Completo. Abaixo do botão do básico há um microaviso apontando para a opção melhor.
