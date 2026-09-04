@@ -149,13 +149,16 @@ Medido em celular emulado, 4G lento e CPU 4x mais lenta:
 
 O que foi feito, sem tocar em design, copy ou integrações:
 
-- **imagens responsivas** — cada imagem tem uma versão menor, e o  descreve o
-  espaço real que ela ocupa no layout, com os mesmos valores do CSS. Trocar um desses
-  valores no CSS pede trocar no  também, senão o navegador baixa o tamanho errado
+- **imagens responsivas** — cada imagem tem uma versão menor (`assets/*-sm/`,
+  `hero-420`, `hero-700`, `pagina-e-pecas-500`, `pagina-e-pecas-900`), e o `sizes`
+  descreve o espaço real que ela ocupa no layout, com os mesmos valores do CSS.
+  **Ao mudar uma largura no CSS, mudar o `sizes` junto** — senão o navegador escolhe
+  o arquivo errado, grande demais ou pequeno demais.
 - **lazy em tudo abaixo da dobra** — só a hero carrega de início
-- **preload da hero** com , que é o elemento de LCP
-- **fonte não bloqueante** — a folha do Google carrega como  e vira   no onload, com  para quem tem JS desligado
-- **cache dos assets** em 7 dias com revalidação (no )
+- **preload da hero** com `imagesrcset`, que é o elemento de LCP
+- **fonte não bloqueante** — a folha do Google carrega como `media="print"` e vira
+  `all` no `onload`, com `<noscript>` para quem tem JS desligado
+- **cache dos assets** por 7 dias com revalidação, no `vercel.json`
 
 **CSS e JS não foram minificados de propósito.** O HTML já sai em 17 KB comprimido com
 brotli pela Vercel; minificar economizaria uns 3 KB — 0,4% do total — ao custo de perder
@@ -164,9 +167,13 @@ não o código.
 
 ## Lazy loading das imagens
 
-As 4 primeiras amostras do carrossel e a página de exemplo **não** têm `loading="lazy"`,
-de propósito: ficam visíveis sem rolar e o lazy só atrasaria a percepção de valor. As 7
-últimas do carrossel seguem lazy, porque só entram em cena quando a pessoa arrasta.
+**Só a hero é `eager`.** Todo o resto tem `loading="lazy"` — nenhuma outra imagem está na
+primeira tela, e carregá-las cedo só roubava banda do LCP.
+
+Testado em 4G lento: as imagens que entram na tela ao rolar chegam carregadas, inclusive
+nos carrosséis horizontais (o navegador só baixa as 2 ou 3 que cabem na largura, não as 30
+do trilho). Se for medir isso de novo, conte só as visíveis **no eixo horizontal também** —
+medir apenas a posição vertical dá um falso "0 de 30 carregadas".
 
 Os botões `.ir-oferta` rolam até `#oferta` sem mexer no histórico — isso evita que o
 back redirect dispare por engano. O back redirect aponta para `https://micangasdajuh.vercel.app/promo` — link absoluto de
