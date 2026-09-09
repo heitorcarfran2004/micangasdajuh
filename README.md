@@ -187,6 +187,22 @@ da coleção com ffmpeg. Para refazer, veja o comando no histórico ou regenere 
 
 ## Bônus
 
-Os 5 bônus prometidos na página **ainda não existem como arquivo**:
-Tabela de Conversão de Cores · Guia de Acabamento · Grades em Branco · Como Precificar
-e Vender · Lista de Compras da Iniciante. Produzir antes de ligar o tráfego.
+Os 5 bônus prometidos na página **estão prontos**, em
+`Downloads/Brincos Miçanga/Entregável/Bônus/`. São 44 páginas A4 no total, geradas na
+função imagem do ChatGPT como as páginas de projeto. As fichas e os scripts estão em
+`entregaveis/bonus-micanga/` — veja o README de lá.
+
+| | páginas | valor na página |
+|---|---|---|
+| 1 — Tabela de Conversão de Cores | 10 | R$ 37 |
+| 2 — Guia de Acabamento Profissional | 8 | R$ 47 |
+| 3 — Grades em Branco para Criar | 10 | R$ 27 |
+| 4 — Como Precificar e Vender | 8 | R$ 57 |
+| 5 — Lista de Compras da Iniciante | 8 | R$ 29 |
+
+As capas em `assets/bonus/` são as mesmas artes que serviram de lei visual na geração,
+então o que o lead vê na página de vendas é literalmente o que ele recebe.
+
+**O plano Essencial (R$ 10) leva só o Bônus 1.** Os cinco vão no Completo e no back
+redirect. Ao montar a entrega no gateway, essa separação precisa existir de verdade —
+prometer os cinco no básico contradiz o microaviso que empurra para o upsell.
