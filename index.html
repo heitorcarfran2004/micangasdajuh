@@ -297,7 +297,7 @@
   .capa-bonus{background:rgba(0,0,0,.12);line-height:0}
   .capa-bonus img{width:100%;height:auto}
   .txt-bonus{padding:22px 24px 24px}
-  .card-bonus.juntos{background:rgba(240,168,30,.10);border-color:rgba(240,168,30,.45);
+  .card-bonus.juntos{grid-column:1/-1;background:rgba(240,168,30,.10);border-color:rgba(240,168,30,.45);
     justify-content:center}
   .card-bonus b{display:block;font-size:17px;margin-bottom:5px;color:#fff}
   .card-bonus span{font-size:14.5px;color:#B6D6DA;line-height:1.55}
@@ -711,14 +711,22 @@
 <section class="bonus">
   <div class="wrap centro">
     <span class="pill mostarda">Bônus inclusos</span>
-    <h2 style="margin:16px 0 12px">5 materiais que <span class="script" style="color:#9EE0E8">ninguém te conta</span></h2>
+    <h2 style="margin:16px 0 12px">6 materiais que <span class="script" style="color:#9EE0E8">ninguém te conta</span></h2>
     <p class="sub">O que separa a peça que parece caseira da que parece comprada — e o que fazer quando você quiser vender.</p>
 
     <div class="bonus-lista" style="text-align:left">
       <div class="card-bonus">
+        <div class="capa-bonus"><img src="assets/bonus/b0-cristal.webp" srcset="assets/bonus-sm/b0-cristal.webp 400w, assets/bonus/b0-cristal.webp 680w" sizes="(max-width:700px) 90vw, 520px" alt="Capa do bônus 30 Brincos de Cristal com Miçangas" width="680" height="383" loading="lazy"></div>
+        <div class="txt-bonus">
+          <b>💎 BÔNUS 1 — 30 Brincos de Cristal com Miçangas</b>
+          <span>Franjas, borlas e cascatas com o brilho de festa e de noiva, feitas à mão com miçanga e cristal. Cada modelo com gráfico, legenda e passo a passo.</span>
+          <span class="valor"><s>R$ 47</s> grátis</span>
+        </div>
+      </div>
+      <div class="card-bonus">
         <div class="capa-bonus"><img src="assets/bonus/b1-cores.webp" srcset="assets/bonus-sm/b1-cores.webp 400w, assets/bonus/b1-cores.webp 680w" sizes="(max-width:700px) 90vw, 520px" alt="Capa do bônus Tabela de Conversão de Cores" width="680" height="383" loading="lazy"></div>
         <div class="txt-bonus">
-          <b>🎨 BÔNUS 1 — Tabela de Conversão de Cores</b>
+          <b>🎨 BÔNUS 2 — Tabela de Conversão de Cores</b>
           <span>A legenda diz "turquesa" — mas qual turquesa comprar? A tabela liga o nome de cada cor às referências das marcas que você acha aqui, inclusive a miçanga nacional.</span>
           <span class="valor"><s>R$ 37</s> grátis</span>
         </div>
@@ -726,7 +734,7 @@
       <div class="card-bonus">
         <div class="capa-bonus"><img src="assets/bonus/b2-acabamento.webp" srcset="assets/bonus-sm/b2-acabamento.webp 400w, assets/bonus/b2-acabamento.webp 680w" sizes="(max-width:700px) 90vw, 520px" alt="Capa do bônus Guia de Acabamento Profissional" width="680" height="383" loading="lazy"></div>
         <div class="txt-bonus">
-          <b>✨ BÔNUS 2 — Guia de Acabamento Profissional</b>
+          <b>✨ BÔNUS 3 — Guia de Acabamento Profissional</b>
           <span>Tensão do fio, arremate que não solta, escolha da ferragem e como esconder o nó. É o detalhe que faz a peça parecer de loja.</span>
           <span class="valor"><s>R$ 47</s> grátis</span>
         </div>
@@ -734,7 +742,7 @@
       <div class="card-bonus">
         <div class="capa-bonus"><img src="assets/bonus/b3-grades.webp" srcset="assets/bonus-sm/b3-grades.webp 400w, assets/bonus/b3-grades.webp 680w" sizes="(max-width:700px) 90vw, 520px" alt="Capa do bônus Grades em Branco para Criar" width="680" height="383" loading="lazy"></div>
         <div class="txt-bonus">
-          <b>📐 BÔNUS 3 — Grades em Branco para Criar</b>
+          <b>📐 BÔNUS 4 — Grades em Branco para Criar</b>
           <span>Folhas quadriculadas no mesmo padrão dos projetos, para você desenhar seus próprios gráficos quando quiser criar um modelo seu.</span>
           <span class="valor"><s>R$ 27</s> grátis</span>
         </div>
@@ -742,7 +750,7 @@
       <div class="card-bonus">
         <div class="capa-bonus"><img src="assets/bonus/b4-precificar.webp" srcset="assets/bonus-sm/b4-precificar.webp 400w, assets/bonus/b4-precificar.webp 680w" sizes="(max-width:700px) 90vw, 520px" alt="Capa do bônus Como Precificar e Vender" width="680" height="383" loading="lazy"></div>
         <div class="txt-bonus">
-          <b>💰 BÔNUS 4 — Como Precificar e Vender</b>
+          <b>💰 BÔNUS 5 — Como Precificar e Vender</b>
           <span>A conta do custo real por peça, a margem que se pratica em brinco artesanal e o que responder quando pedirem desconto.</span>
           <span class="valor"><s>R$ 57</s> grátis</span>
         </div>
@@ -750,16 +758,16 @@
       <div class="card-bonus">
         <div class="capa-bonus"><img src="assets/bonus/b5-compras.webp" srcset="assets/bonus-sm/b5-compras.webp 400w, assets/bonus/b5-compras.webp 680w" sizes="(max-width:700px) 90vw, 520px" alt="Capa do bônus Lista de Compras da Iniciante" width="680" height="383" loading="lazy"></div>
         <div class="txt-bonus">
-          <b>🛒 BÔNUS 5 — Lista de Compras da Iniciante</b>
+          <b>🛒 BÔNUS 6 — Lista de Compras da Iniciante</b>
           <span>Exatamente o que comprar para começar, em que quantidade, e as três coisas em que não vale economizar.</span>
           <span class="valor"><s>R$ 29</s> grátis</span>
         </div>
       </div>
       <div class="card-bonus juntos">
         <div class="txt-bonus">
-          <b>🎁 Os 5 vão juntos</b>
+          <b>🎁 Os 6 vão juntos</b>
           <span>Todos inclusos na Coleção Completa, sem custo nenhum a mais.</span>
-          <span class="valor"><s>R$ 197</s> inclusos</span>
+          <span class="valor"><s>R$ 244</s> inclusos</span>
         </div>
       </div>
     </div>
@@ -822,7 +830,7 @@
           <span class="economize">Economize R$ 74</span>
         </div>
         <div class="plano-preco"><small>R$</small>25,90</div>
-        <p class="plano-obs">Os 100 projetos + os 5 bônus.</p>
+        <p class="plano-obs">Os 100 projetos + os 6 bônus.</p>
         <div class="timer">⏱ A oferta expira em: <b id="relogio">09:59</b></div>
         <ul class="inclui">
           <li><span class="ckm">✓</span> Os 100 projetos completos</li>
@@ -834,11 +842,12 @@
         <hr class="divisor">
         <div class="titulo-bonus">🎁 Bônus inclusos</div>
         <ul class="lista-bonus">
-          <li>🎁 <span><b>BÔNUS 1:</b> Tabela de Conversão de Cores</span></li>
-          <li>🎁 <span><b>BÔNUS 2:</b> Guia de Acabamento Profissional</span></li>
-          <li>🎁 <span><b>BÔNUS 3:</b> Grades em Branco para Criar</span></li>
-          <li>🎁 <span><b>BÔNUS 4:</b> Como Precificar e Vender</span></li>
-          <li>🎁 <span><b>BÔNUS 5:</b> Lista de Compras da Iniciante</span></li>
+          <li>🎁 <span><b>BÔNUS 1:</b> 30 Brincos de Cristal com Miçangas</span></li>
+          <li>🎁 <span><b>BÔNUS 2:</b> Tabela de Conversão de Cores</span></li>
+          <li>🎁 <span><b>BÔNUS 3:</b> Guia de Acabamento Profissional</span></li>
+          <li>🎁 <span><b>BÔNUS 4:</b> Grades em Branco para Criar</span></li>
+          <li>🎁 <span><b>BÔNUS 5:</b> Como Precificar e Vender</span></li>
+          <li>🎁 <span><b>BÔNUS 6:</b> Lista de Compras da Iniciante</span></li>
         </ul>
         <!-- R$ 25,90 -->
         <a href="https://pay.wiapy.com/Ej1KaWuawT-x" class="btn full">SIM! QUERO TUDO</a>
@@ -858,7 +867,7 @@
   <div class="modal-caixa" role="dialog" aria-modal="true" aria-labelledby="upsell-titulo">
     <button class="modal-x" data-fechar aria-label="Fechar">×</button>
     <h3 id="upsell-titulo">Espera — só nesta tela</h3>
-    <p class="modal-sub">Leve a <b>Coleção Completa</b> com os 5 bônus por um valor que não aparece em nenhum outro lugar do site.</p>
+    <p class="modal-sub">Leve a <b>Coleção Completa</b> com os 6 bônus por um valor que não aparece em nenhum outro lugar do site.</p>
 
     <div class="modal-preco">
       <s>R$ 25,90</s>
