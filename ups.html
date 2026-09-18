@@ -101,11 +101,39 @@ img{display:block; max-width:100%}
 .ob-upsell__media{border-radius:14px; overflow:hidden; line-height:0; box-shadow:0 8px 24px rgba(16,20,40,.12)}
 .ob-upsell__media img{width:100%; height:auto}
 .ob-upsell__intro{
-  margin:22px 0 20px; padding-bottom:18px;
-  border-bottom:1px solid rgba(14,17,32,.08);
+  margin:22px 0 0;
   font-size:15px; line-height:1.6; color:var(--tinta-2); text-wrap:pretty;
 }
 .ob-upsell__intro strong{font-weight:600; color:var(--rosa)}
+
+/* ══════════ modelos novos ══════════
+   O argumento aqui não é "tem vídeo", é "a coleção cresce": cada vídeo traz o gráfico
+   de um brinco que ela ainda não tem. O selo NOVO em cada página carrega isso. */
+.novos{margin:34px 0 26px}
+.novos__titulo{
+  font-family:var(--serif); font-weight:800; font-size:22px; line-height:1.2;
+  letter-spacing:-.6px; color:var(--tinta); margin:0; text-wrap:balance;
+}
+.novos__titulo em{font-style:normal; color:var(--rosa)}
+.novos__sub{margin:7px auto 0; max-width:330px; font-size:14px; line-height:1.5; color:var(--cinza); text-wrap:balance}
+/* o trilho sai do recuo do bloco e encosta nas bordas da tela: as páginas entram e
+   saem pela lateral, que é o que dá a sensação de "tem mais" */
+.novos__trilho{
+  display:flex; gap:11px; overflow-x:auto; margin:16px -16px 0; padding:4px 16px 12px;
+  scrollbar-width:none; -webkit-overflow-scrolling:touch;
+}
+.novos__trilho::-webkit-scrollbar{display:none}
+.novos__trilho figure{position:relative; flex:0 0 clamp(138px,38vw,168px); margin:0}
+.novos__trilho img{
+  width:100%; height:auto; border-radius:10px; background:#fff;
+  border:1px solid var(--linha); box-shadow:0 8px 18px rgba(16,20,40,.1);
+}
+.novos__trilho figure::before{
+  content:"NOVO"; position:absolute; top:7px; left:7px; z-index:1;
+  font-size:9.5px; font-weight:700; letter-spacing:.9px; color:#fff;
+  background:var(--rosa); padding:4px 7px 3px; border-radius:999px;
+  box-shadow:0 3px 8px rgba(236,58,114,.35);
+}
 .titulo-lista{
   font-family:var(--serif); font-weight:800; font-size:19px; line-height:1.25;
   letter-spacing:-.5px; color:var(--tinta); text-align:center;
@@ -288,6 +316,27 @@ img{display:block; max-width:100%}
     passagem do fio, franjas e acabamento. Assista, acompanhe e faça junto.
   </p>
 
+  <!-- modelos novos: os gráficos que vêm com os vídeos. O JS duplica as páginas para
+       o carrossel dar a volta sem emenda. -->
+  <section class="novos">
+    <h3 class="novos__titulo">Ganhe <em>+45 modelos</em> novos</h3>
+    <p class="novos__sub">Cada vídeo vem com o gráfico do brinco, pronto para imprimir.</p>
+    <div class="novos__trilho" id="novos-trilho">
+      <figure><img src="assets/ups/modelos/g01-sm.webp" srcset="assets/ups/modelos/g01-sm.webp 320w, assets/ups/modelos/g01.webp 560w" sizes="168px" alt="Gráfico do brinco Caveira Mexicana" width="320" height="453" loading="lazy" decoding="async"></figure>
+      <figure><img src="assets/ups/modelos/g02-sm.webp" srcset="assets/ups/modelos/g02-sm.webp 320w, assets/ups/modelos/g02.webp 560w" sizes="168px" alt="Gráfico do brinco Mandala Dourada" width="320" height="453" loading="lazy" decoding="async"></figure>
+      <figure><img src="assets/ups/modelos/g03-sm.webp" srcset="assets/ups/modelos/g03-sm.webp 320w, assets/ups/modelos/g03.webp 560w" sizes="168px" alt="Gráfico do brinco Girassol" width="320" height="453" loading="lazy" decoding="async"></figure>
+      <figure><img src="assets/ups/modelos/g04-sm.webp" srcset="assets/ups/modelos/g04-sm.webp 320w, assets/ups/modelos/g04.webp 560w" sizes="168px" alt="Gráfico do brinco Pena Pavão" width="320" height="453" loading="lazy" decoding="async"></figure>
+      <figure><img src="assets/ups/modelos/g05-sm.webp" srcset="assets/ups/modelos/g05-sm.webp 320w, assets/ups/modelos/g05.webp 560w" sizes="168px" alt="Gráfico do brinco Sol Asteca" width="320" height="453" loading="lazy" decoding="async"></figure>
+      <figure><img src="assets/ups/modelos/g06-sm.webp" srcset="assets/ups/modelos/g06-sm.webp 320w, assets/ups/modelos/g06.webp 560w" sizes="168px" alt="Gráfico do brinco Tucano" width="320" height="453" loading="lazy" decoding="async"></figure>
+      <figure><img src="assets/ups/modelos/g07-sm.webp" srcset="assets/ups/modelos/g07-sm.webp 320w, assets/ups/modelos/g07.webp 560w" sizes="168px" alt="Gráfico do brinco Gota Arco-Íris" width="320" height="453" loading="lazy" decoding="async"></figure>
+      <figure><img src="assets/ups/modelos/g08-sm.webp" srcset="assets/ups/modelos/g08-sm.webp 320w, assets/ups/modelos/g08.webp 560w" sizes="168px" alt="Gráfico do brinco Melancia" width="320" height="453" loading="lazy" decoding="async"></figure>
+      <figure><img src="assets/ups/modelos/g09-sm.webp" srcset="assets/ups/modelos/g09-sm.webp 320w, assets/ups/modelos/g09.webp 560w" sizes="168px" alt="Gráfico do brinco Mandala Azul" width="320" height="453" loading="lazy" decoding="async"></figure>
+      <figure><img src="assets/ups/modelos/g10-sm.webp" srcset="assets/ups/modelos/g10-sm.webp 320w, assets/ups/modelos/g10.webp 560w" sizes="168px" alt="Gráfico do brinco Rosa Vermelha" width="320" height="453" loading="lazy" decoding="async"></figure>
+      <figure><img src="assets/ups/modelos/g11-sm.webp" srcset="assets/ups/modelos/g11-sm.webp 320w, assets/ups/modelos/g11.webp 560w" sizes="168px" alt="Gráfico do brinco Flor Rosa Gigante" width="320" height="453" loading="lazy" decoding="async"></figure>
+      <figure><img src="assets/ups/modelos/g12-sm.webp" srcset="assets/ups/modelos/g12-sm.webp 320w, assets/ups/modelos/g12.webp 560w" sizes="168px" alt="Gráfico do brinco Rosa dos Ventos" width="320" height="453" loading="lazy" decoding="async"></figure>
+    </div>
+  </section>
+
   <!-- preço + botão do gateway, logo depois da promessa e antes dos detalhes -->
   <div class="oferta" id="btn-sim">
     <div class="de">De <s>R$ 79,90</s></div>
@@ -462,6 +511,41 @@ if (typeof initWiapyUpsell === 'function') {
   new IntersectionObserver(function (e) {
     barra.classList.toggle('on', !e[0].isIntersecting);
   }, { threshold: 0 }).observe(alvo);
+})();
+
+/* carrossel dos modelos novos: desliza sozinho, mesma mecânica da vitrine da promo.
+   A segunda leva de páginas é a emenda: ao passar da metade, volta meia largura. */
+(function () {
+  var trilho = document.getElementById('novos-trilho');
+  if (!trilho) return;
+  Array.prototype.slice.call(trilho.children).forEach(function (f) {
+    var c = f.cloneNode(true);
+    c.setAttribute('aria-hidden', 'true');
+    c.querySelector('img').alt = '';
+    trilho.appendChild(c);
+  });
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var arrastando = false, acumulado = 0;
+  function quadro() {
+    if (!arrastando) {
+      acumulado += 0.45;
+      if (acumulado >= 1) {
+        var passo = Math.floor(acumulado);
+        acumulado -= passo;
+        trilho.scrollLeft += passo;
+      }
+      if (trilho.scrollLeft >= trilho.scrollWidth / 2) trilho.scrollLeft -= trilho.scrollWidth / 2;
+    }
+    requestAnimationFrame(quadro);
+  }
+  ['pointerdown', 'touchstart'].forEach(function (ev) {
+    trilho.addEventListener(ev, function () { arrastando = true; }, { passive: true });
+  });
+  ['pointerup', 'pointercancel', 'touchend', 'touchcancel', 'mouseleave'].forEach(function (ev) {
+    trilho.addEventListener(ev, function () { arrastando = false; }, { passive: true });
+  });
+  window.addEventListener('pointerup', function () { arrastando = false; }, { passive: true });
+  requestAnimationFrame(quadro);
 })();
 
 /* o botão de aceite e o de recusa são desenhados pelo Wiapy (ou pela reserva
