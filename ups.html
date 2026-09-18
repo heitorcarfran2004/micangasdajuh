@@ -87,7 +87,7 @@ img{display:block; max-width:100%}
 }
 .ob-upsell__headline{
   font-family:var(--serif); font-weight:800; font-size:27px; line-height:1.18;
-  letter-spacing:-.8px; color:var(--tinta); margin:0 0 22px; text-wrap:balance;
+  letter-spacing:-.8px; color:var(--tinta); margin:0 0 12px; text-wrap:balance;
 }
 /* o ::after fica atrás do texto: por isso o em precisa de isolation, senão o
    z-index:-1 some por baixo do fundo da página em vez de ficar sob a palavra */
@@ -101,7 +101,7 @@ img{display:block; max-width:100%}
 .ob-upsell__media{border-radius:14px; overflow:hidden; line-height:0; box-shadow:0 8px 24px rgba(16,20,40,.12)}
 .ob-upsell__media img{width:100%; height:auto}
 .ob-upsell__intro{
-  margin:22px 0 0;
+  margin:0 0 20px;
   font-size:15px; line-height:1.6; color:var(--tinta-2); text-wrap:pretty;
 }
 .ob-upsell__intro strong{font-weight:600; color:var(--rosa)}
@@ -109,7 +109,7 @@ img{display:block; max-width:100%}
 /* ══════════ modelos novos ══════════
    O argumento aqui não é "tem vídeo", é "a coleção cresce": cada vídeo traz o gráfico
    de um brinco que ela ainda não tem. O selo NOVO em cada página carrega isso. */
-.novos{margin:34px 0 26px}
+.novos{margin:30px 0 26px}
 .novos__titulo{
   font-family:var(--serif); font-weight:800; font-size:22px; line-height:1.2;
   letter-spacing:-.6px; color:var(--tinta); margin:0; text-wrap:balance;
@@ -301,25 +301,26 @@ img{display:block; max-width:100%}
 
 <!-- ═════════ o upsell ═════════ -->
 <div class="ob-upsell">
-  <span class="ob-upsell__tag">45 vídeoaulas</span>
+  <span class="ob-upsell__tag">50 vídeoaulas</span>
 
   <h2 class="ob-upsell__headline">
-    Não fique presa só aos <em>gráficos</em>! Veja cada montagem <em>na prática</em>
+    Mais <em>50 brincos</em> com suas <em>50 videoaulas</em>
   </h2>
+
+  <!-- a subheadline vem antes da imagem: quem para no topo já lê a promessa inteira -->
+  <p class="ob-upsell__intro">
+    Receba mais <strong>50 modelos de brincos exclusivos</strong> com as respectivas
+    50 videoaulas de cada um deles, e seja guiada do primeiro nó ao arremate
+  </p>
 
   <div class="ob-upsell__media">
     <img src="assets/ups/video.webp" alt="Videoaulas de miçangas passo a passo" width="900" height="507">
   </div>
 
-  <p class="ob-upsell__intro">
-    Tenha acesso a <strong>45 videoaulas</strong> mostrando na prática a montagem,
-    passagem do fio, franjas e acabamento. Assista, acompanhe e faça junto.
-  </p>
-
   <!-- modelos novos: os gráficos que vêm com os vídeos. O JS duplica as páginas para
        o carrossel dar a volta sem emenda. -->
   <section class="novos">
-    <h3 class="novos__titulo">Ganhe <em>+45 modelos</em> novos</h3>
+    <h3 class="novos__titulo">Ganhe <em>+50 modelos</em> novos</h3>
     <p class="novos__sub">Cada vídeo vem com o gráfico do brinco, pronto para imprimir.</p>
     <div class="novos__trilho" id="novos-trilho">
       <figure><img src="assets/ups/modelos/g01-sm.webp" srcset="assets/ups/modelos/g01-sm.webp 320w, assets/ups/modelos/g01.webp 560w" sizes="168px" alt="Gráfico do brinco Caveira Mexicana" width="320" height="453" loading="lazy" decoding="async"></figure>
