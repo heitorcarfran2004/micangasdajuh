@@ -34,7 +34,6 @@
 body{
   margin:0; background:var(--papel); color:var(--tinta);
   font-family:var(--sans); -webkit-font-smoothing:antialiased;
-  padding-bottom:78px;                     /* a barra fixa do botão */
 }
 img{display:block; max-width:100%}
 .env{width:100%; max-width:460px; margin:0 auto; padding:0 12px}
@@ -45,7 +44,7 @@ img{display:block; max-width:100%}
    ali para sempre queima a confiança de quem volta. */
 .faixa-tempo{
   background:linear-gradient(135deg,var(--rosa),var(--rosa-esc));
-  color:#fff; position:sticky; top:0; z-index:30;
+  color:#fff; position:relative; z-index:30;
   box-shadow:0 2px 14px rgba(204,47,88,.28);
 }
 .faixa-tempo .env{
@@ -87,7 +86,7 @@ img{display:block; max-width:100%}
 }
 .ob-upsell__headline{
   font-family:var(--serif); font-weight:800; font-size:28px; line-height:1.18;
-  letter-spacing:-.8px; color:var(--tinta); margin:0 0 22px; text-wrap:balance;
+  letter-spacing:-.8px; color:var(--tinta); margin:0 0 12px; text-wrap:balance;
 }
 /* o ::after fica atrás do texto: por isso o em precisa de isolation, senão o
    z-index:-1 some por baixo do fundo da página em vez de ficar sob a palavra */
@@ -105,12 +104,39 @@ img{display:block; max-width:100%}
 .ob-upsell__media{border-radius:14px; overflow:hidden; line-height:0; box-shadow:0 8px 24px rgba(16,20,40,.12)}
 .ob-upsell__media img{width:100%; height:auto}
 .ob-upsell__intro{
-  margin:22px 0 20px; padding-bottom:18px;
-  border-bottom:1px solid rgba(14,17,32,.08);
+  margin:0 0 20px;
   font-size:15px; line-height:1.6; color:var(--tinta-2); text-wrap:pretty;
 }
 .ob-upsell__intro strong{font-weight:600; color:var(--rosa)}
 .ob-upsell__intro em{font-style:normal; font-weight:600; color:var(--tinta)}
+
+/* ══════════ modelos novos ══════════
+   O argumento aqui não é "tem vídeo", é "a coleção cresce": cada vídeo traz o gráfico
+   de um brinco que ela ainda não tem. O selo NOVO em cada página carrega isso. */
+.novos{margin:45px 0 26px}
+.novos__titulo{
+  font-family:var(--serif); font-weight:800; font-size:22px; line-height:1.2;
+  letter-spacing:-.6px; color:var(--tinta); margin:0; text-wrap:balance;
+}
+.novos__titulo em{font-style:normal; color:var(--rosa)}
+/* o trilho sai do recuo do bloco e encosta nas bordas da tela: as páginas entram e
+   saem pela lateral, que é o que dá a sensação de "tem mais" */
+.novos__trilho{
+  display:flex; gap:11px; overflow-x:auto; margin:16px -16px 0; padding:4px 16px 12px;
+  scrollbar-width:none; -webkit-overflow-scrolling:touch;
+}
+.novos__trilho::-webkit-scrollbar{display:none}
+.novos__trilho figure{position:relative; flex:0 0 clamp(138px,38vw,168px); margin:0}
+.novos__trilho img{
+  width:100%; height:auto; border-radius:10px; background:#fff;
+  border:1px solid var(--linha); box-shadow:0 8px 18px rgba(16,20,40,.1);
+}
+.novos__trilho figure::before{
+  content:"NOVO"; position:absolute; top:7px; left:7px; z-index:1;
+  font-size:9.5px; font-weight:700; letter-spacing:.9px; color:#fff;
+  background:var(--rosa); padding:4px 7px 3px; border-radius:999px;
+  box-shadow:0 3px 8px rgba(236,58,114,.35);
+}
 .titulo-lista{
   font-family:var(--serif); font-weight:800; font-size:19px; line-height:1.25;
   letter-spacing:-.5px; color:var(--tinta); text-align:center;
@@ -135,14 +161,17 @@ img{display:block; max-width:100%}
 /* ══════════ preço e botão ══════════ */
 .oferta{
   background:var(--branco); border:1px solid var(--linha); border-radius:14px;
-  padding:22px 16px 18px; margin:4px 0 32px; text-align:center;
+  padding:22px 16px 18px; margin:30px 0 32px; text-align:center;
   box-shadow:0 6px 20px rgba(16,20,40,.07);
 }
 .oferta .de{font-size:14px; color:var(--cinza); text-decoration:line-through}
 .oferta .por{
   display:flex; align-items:baseline; justify-content:center; gap:8px; margin-top:5px;
 }
-.oferta .por span{font-size:14px; font-weight:600; color:var(--tinta-2)}
+.oferta__titulo{
+  font-family:var(--serif); font-weight:800; font-size:22px; line-height:1.2;
+  letter-spacing:-.6px; color:var(--tinta); margin:0 0 10px;
+}
 .oferta .por b{
   font-family:var(--serif); font-weight:800; font-size:41px; line-height:1;
   letter-spacing:-1.6px; color:var(--rosa);
@@ -217,24 +246,6 @@ img{display:block; max-width:100%}
   text-align:center; font-size:12.5px; color:#b03256; font-weight:600; line-height:1.4;
 }
 
-/* ══════════ barra fixa ══════════ */
-/* O botão sai da vista quando a pessoa desce para ler os depoimentos; a barra
-   devolve o preço e a ação sem obrigar a rolar de volta. */
-.barra-fixa{
-  position:fixed; left:0; right:0; bottom:0; z-index:40;
-  background:rgba(255,255,255,.97); backdrop-filter:saturate(180%) blur(12px);
-  border-top:1px solid var(--linha);
-  box-shadow:0 -6px 24px rgba(16,20,40,.09);
-  padding-bottom:env(safe-area-inset-bottom);
-  transform:translateY(110%); transition:transform .26s ease;
-}
-.barra-fixa.on{transform:none}
-.barra-fixa .env{display:flex; align-items:center; gap:11px; padding:10px 12px}
-.barra-fixa .val{flex:0 0 auto; line-height:1.15}
-.barra-fixa .val small{display:block; font-size:11px; color:var(--cinza); text-decoration:line-through}
-.barra-fixa .val b{font-family:var(--serif); font-weight:800; font-size:19px; color:var(--rosa); letter-spacing:-.5px}
-.barra-fixa .cta{margin:0; flex:1; padding:14px 12px; font-size:14.5px; animation:none}
-
 /* ── confirmação da recusa ── */
 .modal{
   position:fixed; inset:0; z-index:60;
@@ -287,7 +298,6 @@ img{display:block; max-width:100%}
 }
 @media (prefers-reduced-motion:reduce){
   .cta,.doispontos{animation:none}
-  .barra-fixa{transition:none}
 }
 </style>
 </head>
@@ -322,37 +332,44 @@ img{display:block; max-width:100%}
     <span class="linha-2">As vídeoaulas podem ser <em>vitais para iniciantes</em></span>
   </h2>
 
-  <div class="ob-upsell__media">
-    <img src="assets/ups/video.webp" alt="Videoaulas de miçangas passo a passo" width="900" height="507">
-  </div>
-
+  <!-- a subheadline vem antes da imagem: quem para no topo já lê a promessa inteira -->
   <p class="ob-upsell__intro">
     O gráfico mostra <em>onde</em> cada miçanga vai — mas não mostra <em>como</em> a
     agulha entra. É aí que a maioria trava na primeira peça. Por isso estou refazendo
     a oferta <strong>pela metade do preço</strong>, e só agora.
   </p>
 
-  <!-- preço + botão do gateway, logo depois da promessa e antes dos detalhes -->
-  <div class="oferta" id="btn-sim">
-    <div class="de">De <s>R$ 19,90</s></div>
-    <div class="por"><span>Por apenas</span><b>R$ 9,90</b></div>
-    <div class="parcela">pagamento único, no Pix ou no cartão</div>
-
-    <!-- o Wiapy desenha aqui o botão de aceite e o link de recusa -->
-    <div id="wiapy_upsell"></div>
-
-    <!-- reserva: se o SDK não carregar, o link continua clicável em vez de sumir -->
-    <noscript><a class="cta" href="https://pay.wiapy.com/checkout/6aa1e08aa3b1f406fa7ab24d">SIM, EU ACEITO ESSA OFERTA</a></noscript>
-
-    <div class="selo-seguro">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>
-      Compra segura · acesso imediato
-    </div>
+  <div class="ob-upsell__media">
+    <img src="assets/ups/video.webp" alt="Videoaulas de miçangas passo a passo" width="900" height="507">
   </div>
+
+  <!-- modelos novos: os gráficos que vêm com os vídeos. O JS duplica as páginas para
+       o carrossel dar a volta sem emenda. -->
+  <section class="novos">
+    <h3 class="novos__titulo">Você ainda não tem nenhum destes</h3>
+    <div class="novos__trilho" id="novos-trilho">
+      <figure><img src="assets/ups/modelos/g01-sm.webp" srcset="assets/ups/modelos/g01-sm.webp 320w, assets/ups/modelos/g01.webp 560w" sizes="168px" alt="Gráfico do brinco Caveira Mexicana" width="320" height="453" loading="lazy" decoding="async"></figure>
+      <figure><img src="assets/ups/modelos/g02-sm.webp" srcset="assets/ups/modelos/g02-sm.webp 320w, assets/ups/modelos/g02.webp 560w" sizes="168px" alt="Gráfico do brinco Mandala Dourada" width="320" height="453" loading="lazy" decoding="async"></figure>
+      <figure><img src="assets/ups/modelos/g03-sm.webp" srcset="assets/ups/modelos/g03-sm.webp 320w, assets/ups/modelos/g03.webp 560w" sizes="168px" alt="Gráfico do brinco Girassol" width="320" height="453" loading="lazy" decoding="async"></figure>
+      <figure><img src="assets/ups/modelos/g04-sm.webp" srcset="assets/ups/modelos/g04-sm.webp 320w, assets/ups/modelos/g04.webp 560w" sizes="168px" alt="Gráfico do brinco Pena Pavão" width="320" height="453" loading="lazy" decoding="async"></figure>
+      <figure><img src="assets/ups/modelos/g05-sm.webp" srcset="assets/ups/modelos/g05-sm.webp 320w, assets/ups/modelos/g05.webp 560w" sizes="168px" alt="Gráfico do brinco Sol Asteca" width="320" height="453" loading="lazy" decoding="async"></figure>
+      <figure><img src="assets/ups/modelos/g06-sm.webp" srcset="assets/ups/modelos/g06-sm.webp 320w, assets/ups/modelos/g06.webp 560w" sizes="168px" alt="Gráfico do brinco Tucano" width="320" height="453" loading="lazy" decoding="async"></figure>
+      <figure><img src="assets/ups/modelos/g07-sm.webp" srcset="assets/ups/modelos/g07-sm.webp 320w, assets/ups/modelos/g07.webp 560w" sizes="168px" alt="Gráfico do brinco Gota Arco-Íris" width="320" height="453" loading="lazy" decoding="async"></figure>
+      <figure><img src="assets/ups/modelos/g08-sm.webp" srcset="assets/ups/modelos/g08-sm.webp 320w, assets/ups/modelos/g08.webp 560w" sizes="168px" alt="Gráfico do brinco Melancia" width="320" height="453" loading="lazy" decoding="async"></figure>
+      <figure><img src="assets/ups/modelos/g09-sm.webp" srcset="assets/ups/modelos/g09-sm.webp 320w, assets/ups/modelos/g09.webp 560w" sizes="168px" alt="Gráfico do brinco Mandala Azul" width="320" height="453" loading="lazy" decoding="async"></figure>
+      <figure><img src="assets/ups/modelos/g10-sm.webp" srcset="assets/ups/modelos/g10-sm.webp 320w, assets/ups/modelos/g10.webp 560w" sizes="168px" alt="Gráfico do brinco Rosa Vermelha" width="320" height="453" loading="lazy" decoding="async"></figure>
+      <figure><img src="assets/ups/modelos/g11-sm.webp" srcset="assets/ups/modelos/g11-sm.webp 320w, assets/ups/modelos/g11.webp 560w" sizes="168px" alt="Gráfico do brinco Flor Rosa Gigante" width="320" height="453" loading="lazy" decoding="async"></figure>
+      <figure><img src="assets/ups/modelos/g12-sm.webp" srcset="assets/ups/modelos/g12-sm.webp 320w, assets/ups/modelos/g12.webp 560w" sizes="168px" alt="Gráfico do brinco Rosa dos Ventos" width="320" height="453" loading="lazy" decoding="async"></figure>
+    </div>
+  </section>
 
   <h3 class="titulo-lista">O que você deixa de fora sem elas</h3>
 
   <div class="ob-upsell__list">
+    <div class="ob-upsell__item">
+      <span class="ob-upsell__icon"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <p><strong>50 modelos de brincos exclusivos</strong> — cada um com o seu gráfico, pronto para imprimir, e fora da sua coleção atual.</p>
+    </div>
     <div class="ob-upsell__item">
       <span class="ob-upsell__icon"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       <p><strong>Montagem do zero, do primeiro nó ao brinco pronto</strong> — você vê exatamente onde a agulha entra em cada passo.</p>
@@ -368,6 +385,25 @@ img{display:block; max-width:100%}
     <div class="ob-upsell__item">
       <span class="ob-upsell__icon"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       <p><strong>Mais de 17 horas de gravação, sem corte</strong> — dá para pausar, voltar e refazer no seu ritmo.</p>
+    </div>
+  </div>
+
+  <!-- preço + botão do gateway, depois dos benefícios: ela chega no preço já sabendo tudo o que leva -->
+  <div class="oferta" id="btn-sim">
+    <h3 class="oferta__titulo">Tudo por apenas</h3>
+    <div class="de">De <s>R$ 19,90</s></div>
+    <div class="por"><b>R$ 9,90</b></div>
+    <div class="parcela">pagamento único, no Pix ou no cartão</div>
+
+    <!-- o Wiapy desenha aqui o botão de aceite e o link de recusa -->
+    <div id="wiapy_upsell"></div>
+
+    <!-- reserva: se o SDK não carregar, o link continua clicável em vez de sumir -->
+    <noscript><a class="cta" href="https://pay.wiapy.com/checkout/6aa1e08aa3b1f406fa7ab24d">SIM, EU ACEITO ESSA OFERTA</a></noscript>
+
+    <div class="selo-seguro">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>
+      Compra segura · acesso imediato
     </div>
   </div>
 
@@ -444,14 +480,6 @@ img{display:block; max-width:100%}
   </div>
 </div>
 
-<!-- ═════════ barra fixa ═════════ -->
-<div class="barra-fixa" id="barra-fixa">
-  <div class="env">
-    <div class="val"><small>R$ 19,90</small><b>R$ 9,90</b></div>
-    <a class="cta cta-verde" href="https://pay.wiapy.com/checkout/6aa1e08aa3b1f406fa7ab24d">SIM, EU ACEITO</a>
-  </div>
-</div>
-
 <!-- ══════════ botão do gateway ══════════
      A recusa NÃO volta para o login da Wiapy: vai para o downsell, que é a próxima
      oferta do funil. Enquanto /dows não existir, quem recusar cai num 404 — subir
@@ -468,7 +496,7 @@ if (typeof initWiapyUpsell === 'function') {
       borderRadius: "10px"
     },
     refusalLinkUrl: "https://clubedajuh.vercel.app/",
-    refusalLinkText: "Recusar está oferta",
+    refusalLinkText: "Recusar esta oferta",
     refusalLinkColor: "#000000"
   });
 } else {
@@ -476,7 +504,7 @@ if (typeof initWiapyUpsell === 'function') {
   // ficar sem caminho de saída
   document.getElementById('wiapy_upsell').innerHTML =
     '<a class="cta cta-verde" href="https://pay.wiapy.com/checkout/6aa1e08aa3b1f406fa7ab24d">SIM, EU ACEITO ESSA OFERTA</a>' +
-    '<a class="recusar" href="https://clubedajuh.vercel.app/">Recusar está oferta</a>';
+    '<a class="recusar" href="https://clubedajuh.vercel.app/">Recusar esta oferta</a>';
 }
 </script>
 
@@ -544,14 +572,39 @@ if (typeof initWiapyUpsell === 'function') {
   var id = setInterval(tique, 1000);
 })();
 
-/* a barra fixa entra quando o botão principal sai da vista */
+/* carrossel dos modelos novos: desliza sozinho, mesma mecânica da vitrine da promo.
+   A segunda leva de páginas é a emenda: ao passar da metade, volta meia largura. */
 (function () {
-  var alvo = document.getElementById('btn-sim');
-  var barra = document.getElementById('barra-fixa');
-  if (!alvo || !barra || !('IntersectionObserver' in window)) return;
-  new IntersectionObserver(function (e) {
-    barra.classList.toggle('on', !e[0].isIntersecting);
-  }, { threshold: 0 }).observe(alvo);
+  var trilho = document.getElementById('novos-trilho');
+  if (!trilho) return;
+  Array.prototype.slice.call(trilho.children).forEach(function (f) {
+    var c = f.cloneNode(true);
+    c.setAttribute('aria-hidden', 'true');
+    c.querySelector('img').alt = '';
+    trilho.appendChild(c);
+  });
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var arrastando = false, acumulado = 0;
+  function quadro() {
+    if (!arrastando) {
+      acumulado += 0.45;
+      if (acumulado >= 1) {
+        var passo = Math.floor(acumulado);
+        acumulado -= passo;
+        trilho.scrollLeft += passo;
+      }
+      if (trilho.scrollLeft >= trilho.scrollWidth / 2) trilho.scrollLeft -= trilho.scrollWidth / 2;
+    }
+    requestAnimationFrame(quadro);
+  }
+  ['pointerdown', 'touchstart'].forEach(function (ev) {
+    trilho.addEventListener(ev, function () { arrastando = true; }, { passive: true });
+  });
+  ['pointerup', 'pointercancel', 'touchend', 'touchcancel', 'mouseleave'].forEach(function (ev) {
+    trilho.addEventListener(ev, function () { arrastando = false; }, { passive: true });
+  });
+  window.addEventListener('pointerup', function () { arrastando = false; }, { passive: true });
+  requestAnimationFrame(quadro);
 })();
 
 /* o botão de aceite e o de recusa são desenhados pelo Wiapy (ou pela reserva
