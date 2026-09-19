@@ -91,7 +91,7 @@ img{display:block; max-width:100%}
 /* quem manda na largura do vídeo é este contêiner: o player do VTurb reescreve o
    style do próprio elemento e ignora a largura posta nele */
 .palco-vsl{
-  width:75%; max-width:400px; margin:18px auto 0;
+  width:70%; max-width:400px; margin:18px auto 0;
   border-radius:16px; overflow:hidden; line-height:0;
   box-shadow:0 10px 28px rgba(16,20,40,.14);
 }
@@ -156,7 +156,12 @@ img{display:block; max-width:100%}
 .recusar:hover{color:var(--tinta-2)}
 
 /* ══════════ o que ela leva ══════════ */
-.lista{display:flex; flex-direction:column; gap:14px; margin:24px 0 0; text-align:left}
+/* Mora DENTRO do card, em cima do preço: ela lê o que leva e só então vê quanto custa.
+   O tracinho fecha a lista e separa do valor. */
+.lista{
+  display:flex; flex-direction:column; gap:12px; text-align:left;
+  margin:0 0 18px; padding:0 0 16px; border-bottom:1px solid var(--linha);
+}
 .item{display:flex; align-items:flex-start; gap:11px}
 .item .ck{
   flex:0 0 22px; width:22px; height:22px; margin-top:1px; border-radius:50%;
@@ -230,6 +235,25 @@ img{display:block; max-width:100%}
 <div class="env depois" id="depois">
 
   <div class="oferta" id="btn-sim">
+    <div class="lista">
+      <div class="item">
+        <span class="ck"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <p><strong>+50 gráficos exclusivos</strong>, que não estão na sua coleção.</p>
+      </div>
+      <div class="item">
+        <span class="ck"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <p><strong>50 videoaulas</strong>, uma para cada um desses brincos.</p>
+      </div>
+      <div class="item">
+        <span class="ck"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <p><strong>A montagem do zero ao brinco pronto</strong>, sem corte.</p>
+      </div>
+      <div class="item">
+        <span class="ck"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <p><strong>Acesso vitalício ao aplicativo</strong>, com todo o conteúdo.</p>
+      </div>
+    </div>
+
     <h2 class="oferta__titulo">Tudo por apenas</h2>
     <div class="de">De <s>R$ 79,90</s></div>
     <div class="por"><b>R$ 19,90</b></div>
@@ -244,25 +268,6 @@ img{display:block; max-width:100%}
     <div class="selo-seguro">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>
       Compra segura · acesso imediato
-    </div>
-  </div>
-
-  <div class="lista">
-    <div class="item">
-      <span class="ck"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      <p><strong>+50 gráficos exclusivos</strong>, que não estão na sua coleção.</p>
-    </div>
-    <div class="item">
-      <span class="ck"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      <p><strong>50 videoaulas</strong>, uma para cada um desses brincos.</p>
-    </div>
-    <div class="item">
-      <span class="ck"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      <p><strong>A montagem do zero ao brinco pronto</strong>, sem corte.</p>
-    </div>
-    <div class="item">
-      <span class="ck"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      <p><strong>Acesso vitalício ao aplicativo</strong>, com todo o conteúdo.</p>
     </div>
   </div>
 
