@@ -31,7 +31,7 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"></noscript>
 
 <!-- SDK do Wiapy: define initWiapyUpsell(), que desenha o botão de aceite e o de recusa -->
-<script src="https://wiapy.com/js/upsell.js" async></script>
+<script src="https://wiapy.com/sell/1.0.0/sell.min.js" async></script>
 
 <!-- UTMify: a venda do upsell cai no mesmo painel da index -->
 <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids async defer></script>
@@ -295,29 +295,48 @@ img{display:block; max-width:100%}
 </script>
 
 <!-- ══════════ botão do gateway ══════════
-     A recusa vai para o downsell (/dows), que segue igual ao da página antiga. -->
+     O SDK (sell.min.js) desenha o botão de 1 clique: ele lê o `wiapy_sell` que a Wiapy
+     põe na URL ao mandar a compradora para cá e cobra no mesmo cartão, sem novo checkout.
+     Como o script é async, ELE AINDA NÃO EXISTE quando este trecho roda — por isso a
+     espera abaixo. Sem ela a página cai direto no link de reserva e perde o 1 clique.
+     A recusa vai para o downsell (/dows). -->
 <script>
-if (typeof initWiapyUpsell === 'function') {
-  initWiapyUpsell({
-    linkUrl: "https://pay.wiapy.com/checkout/6aa1e01db0c1c48195cf0ef8",
-    linkText: "SIM, EU QUERO A OFERTA",
-    styles: {
-      backgroundColor: "#00d769",
-      hoverBackgroundColor: "#00b85a",
-      fontSize: "17px",
-      borderRadius: "10px"
-    },
-    refusalLinkUrl: "http://micangasdajuh.vercel.app/dows",
-    refusalLinkText: "Eu não quero a oferta",
-    refusalLinkColor: "#000000"
-  });
-} else {
-  // o SDK não chegou: desenha o mesmo par de links à mão, para a página nunca
-  // ficar sem caminho de saída
-  document.getElementById('wiapy_upsell').innerHTML =
-    '<a class="cta cta-verde" href="https://pay.wiapy.com/checkout/6aa1e01db0c1c48195cf0ef8">SIM, EU QUERO A OFERTA</a>' +
-    '<a class="recusar" href="http://micangasdajuh.vercel.app/dows">Eu não quero a oferta</a>';
-}
+(function () {
+  var ACEITE = "https://pay.wiapy.com/checkout/6aa1e01db0c1c48195cf0ef8";
+  var RECUSA = "https://micangasdajuh.vercel.app/dows";
+  var caixa = document.getElementById('wiapy_upsell');
+
+  function desenhar() {
+    if (typeof initWiapyUpsell !== 'function') return false;
+    initWiapyUpsell({
+      linkUrl: ACEITE,
+      linkText: "SIM, EU QUERO A OFERTA",
+      styles: {
+        backgroundColor: "#00d769",
+        hoverBackgroundColor: "#00b85a",
+        fontSize: "17px",
+        borderRadius: "10px"
+      },
+      refusalLinkUrl: RECUSA,
+      refusalLinkText: "Eu não quero a oferta",
+      refusalLinkColor: "#000000"
+    });
+    return true;
+  }
+
+  // reserva: o mesmo par de links à mão, para a página nunca ficar sem saída
+  function reserva() {
+    if (caixa.children.length) return;
+    caixa.innerHTML =
+      '<a class="cta cta-verde" href="' + ACEITE + '">SIM, EU QUERO A OFERTA</a>' +
+      '<a class="recusar" href="' + RECUSA + '">Eu não quero a oferta</a>';
+  }
+
+  if (!desenhar()) {
+    var tentativa = setInterval(function () { if (desenhar()) clearInterval(tentativa); }, 150);
+    setTimeout(function () { clearInterval(tentativa); reserva(); }, 5000);
+  }
+})();
 </script>
 
 <script>

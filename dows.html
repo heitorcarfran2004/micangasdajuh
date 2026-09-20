@@ -17,7 +17,7 @@
      o botão de aceite e o de recusa. SEM ELE A FUNÇÃO NÃO EXISTE e nenhum botão
      aparece — a página cai no botão de reserva que está no HTML.
      >>> CONFIRMAR A URL NO PAINEL DA WIAPY: é a linha que eles mandam colar no <head>. -->
-<script src="https://wiapy.com/js/upsell.js" async></script>
+<script src="https://wiapy.com/sell/1.0.0/sell.min.js" async></script>
 
 <!-- UTMify: o mesmo script da index, para a venda do upsell cair no mesmo painel -->
 <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids async defer></script>
@@ -484,28 +484,44 @@ img{display:block; max-width:100%}
      A recusa NÃO volta para o login da Wiapy: vai para o downsell, que é a próxima
      oferta do funil. Enquanto /dows não existir, quem recusar cai num 404 — subir
      as duas juntas, ou apontar a recusa para a área de membros. -->
+<!-- O SDK (sell.min.js) é async: quando este trecho roda ele AINDA NÃO EXISTE, por isso a
+     espera. Sem ela a página cai no link de reserva e perde a compra em 1 clique. -->
 <script>
-if (typeof initWiapyUpsell === 'function') {
-  initWiapyUpsell({
-    linkUrl: "https://pay.wiapy.com/checkout/6aa1e08aa3b1f406fa7ab24d",
-    linkText: "SIM, EU ACEITO ESSA OFERTA",
-    styles: {
-      backgroundColor: "#00d769",
-      hoverBackgroundColor: "#00b85a",
-      fontSize: "17px",
-      borderRadius: "10px"
-    },
-    refusalLinkUrl: "https://clubedajuh.vercel.app/",
-    refusalLinkText: "Recusar esta oferta",
-    refusalLinkColor: "#000000"
-  });
-} else {
-  // o SDK não chegou: desenha o mesmo par de links à mão, para a página nunca
-  // ficar sem caminho de saída
-  document.getElementById('wiapy_upsell').innerHTML =
-    '<a class="cta cta-verde" href="https://pay.wiapy.com/checkout/6aa1e08aa3b1f406fa7ab24d">SIM, EU ACEITO ESSA OFERTA</a>' +
-    '<a class="recusar" href="https://clubedajuh.vercel.app/">Recusar esta oferta</a>';
-}
+(function () {
+  var ACEITE = "https://pay.wiapy.com/checkout/6aa1e08aa3b1f406fa7ab24d";
+  var RECUSA = "https://clubedajuh.vercel.app/";
+  var caixa = document.getElementById('wiapy_upsell');
+
+  function desenhar() {
+    if (typeof initWiapyUpsell !== 'function') return false;
+    initWiapyUpsell({
+      linkUrl: ACEITE,
+      linkText: "SIM, EU ACEITO ESSA OFERTA",
+      styles: {
+        backgroundColor: "#00d769",
+        hoverBackgroundColor: "#00b85a",
+        fontSize: "17px",
+        borderRadius: "10px"
+      },
+      refusalLinkUrl: RECUSA,
+      refusalLinkText: "Recusar esta oferta",
+      refusalLinkColor: "#000000"
+    });
+    return true;
+  }
+
+  function reserva() {
+    if (caixa.children.length) return;
+    caixa.innerHTML =
+      '<a class="cta cta-verde" href="' + ACEITE + '">SIM, EU ACEITO ESSA OFERTA</a>' +
+      '<a class="recusar" href="' + RECUSA + '">Recusar esta oferta</a>';
+  }
+
+  if (!desenhar()) {
+    var tentativa = setInterval(function () { if (desenhar()) clearInterval(tentativa); }, 150);
+    setTimeout(function () { clearInterval(tentativa); reserva(); }, 5000);
+  }
+})();
 </script>
 
 <!-- ══════════ a recusa passa pelo popup ══════════
