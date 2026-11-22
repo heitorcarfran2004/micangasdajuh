@@ -629,11 +629,11 @@
     <h2 class="tit">"Mas e se eu…"</h2>
     <p class="corpo" style="text-align:center">As dúvidas que mais aparecem de quem está começando. Todas têm resposta dentro do material:</p>
     <div class="objecoes">
-      <div class="obj"><span class="oi">🌱</span><div><b>…nunca ter feito nada de artesanato?</b><span>Comece pelos 15 modelos de nível fácil, com poucas cores e desenho simples. Os passos 1 a 3 mostram o começo em desenho: o primeiro nó, a primeira linha e como virar.</span></div></div>
-      <div class="obj"><span class="oi">🛒</span><div><b>…não saber que material comprar?</b><span>Cada projeto lista o que aquele modelo pede, e a legenda dá o nome de cada cor. A Tabela de Conversão de Cores e a Lista de Compras dizem o que pedir na loja ou na internet. Funciona com miçanga nacional ou importada.</span></div></div>
-      <div class="obj"><span class="oi">😬</span><div><b>…ficar com cara de feito em casa?</b><span>O Guia de Acabamento Profissional mostra a tensão certa da linha, o arremate que não solta e como esconder o nó. É o detalhe que faz a peça parecer de loja.</span></div></div>
-      <div class="obj"><span class="oi">📏</span><div><b>…a linha acabar no meio?</b><span>Cada projeto já diz quanto de linha cortar antes de começar.</span></div></div>
-      <div class="obj"><span class="oi">📱</span><div><b>…eu precisar ver alguém fazendo?</b><span>Cada passo vem desenhado e fica parado na página, esperando você. Você vai no seu ritmo, quantas vezes precisar.</span></div></div>
+      <div class="obj"><span class="oi">🌱</span><div><b>…nunca ter feito artesanato?</b><span>Comece pelos 15 modelos fáceis, de poucas cores.</span></div></div>
+      <div class="obj"><span class="oi">🛒</span><div><b>…não saber que material comprar?</b><span>Cada projeto lista o material e o nome de cada cor.</span></div></div>
+      <div class="obj"><span class="oi">😬</span><div><b>…ficar com cara de feito em casa?</b><span>O guia de acabamento deixa a peça com cara de loja.</span></div></div>
+      <div class="obj"><span class="oi">📏</span><div><b>…a linha acabar no meio?</b><span>Cada projeto diz quanto de linha cortar antes.</span></div></div>
+      <div class="obj"><span class="oi">📱</span><div><b>…precisar ver alguém fazendo?</b><span>Cada passo vem desenhado, no seu ritmo.</span></div></div>
     </div>
 
     <!-- 5. vender -->
@@ -727,7 +727,6 @@
 
 <button class="descer" id="descer" type="button" aria-label="Rolar para baixo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
 
-<div class="fixo" id="fixo"><a href="#oferta" class="btn" id="fixo-btn">QUERO MEU PLANO POR R$ 27,90</a></div>
 
 <script>
 (function () {
@@ -857,8 +856,7 @@
     }, 1000);
   }
 
-  // botao fixo aparece depois do resultado, some na area dos planos
-  function botaoFixo() {
+  function botaoFixo() { return;
     var fixo = document.getElementById('fixo'), planos = document.querySelector('.planos');
     window.addEventListener('scroll', function () {
       var r = planos.getBoundingClientRect();
@@ -871,12 +869,11 @@
   }
 
   // seta "role para baixo": aparece enquanto ainda tem página abaixo, some no fim
-  var seta = document.getElementById('descer'), fixoEl = document.getElementById('fixo');
+  var seta = document.getElementById('descer');
   function setaDescer() {
     var falta = document.documentElement.scrollHeight - scrollY - innerHeight;
     var t = telas[atual].dataset.t;
     seta.classList.toggle('on', falta > 140 && t !== 'carrega');
-    seta.classList.toggle('alto', fixoEl.classList.contains('mostra'));
   }
   seta.addEventListener('click', function () { scrollBy({ top: innerHeight * 0.7, behavior: 'smooth' }); });
   addEventListener('scroll', setaDescer, { passive: true });
