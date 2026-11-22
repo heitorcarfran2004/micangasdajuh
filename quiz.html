@@ -315,6 +315,12 @@
   .nv.m{background:var(--mostarda-claro)}.nv.m b{color:#C98A0C}
   .nv.a{background:var(--coral-nevoa)}.nv.a b{color:var(--coral)}
   .tsl .obj{align-items:flex-start}
+  .dores3{display:grid;gap:10px;margin-top:16px}
+  .dores3 div{background:var(--turq-esc);color:#fff;border-radius:16px;padding:14px 16px;display:grid;grid-template-columns:34px 1fr;column-gap:10px;row-gap:3px}
+  .dores3 .di{grid-row:span 2;font-size:24px}
+  .dores3 b{font-size:15.5px}
+  .dores3 small{font-size:14px;color:#BFE0E4;line-height:1.45}
+  .usos div b{display:block;font-size:15px;margin-bottom:2px;color:var(--tinta)}
   .tsl .obj span{line-height:1.45}
 </style>
 </head>
@@ -355,13 +361,13 @@
   <!-- 2 -->
   <section class="tela" data-t="q" data-chave="trava">
     <span class="passo">Pergunta 2 de 7</span>
-    <h2>O que mais te trava hoje?</h2>
+    <h2>O que mais te faz pensar <span class="script cr">"não é para mim"</span>?</h2>
     <p class="apoio">Seja sincera, é isso que define o seu plano.</p>
     <div class="opcoes">
-      <button class="op" data-v="comeco"><span class="em">🧵</span><span>Não sei nem por onde começar<small>a primeira fileira sai torta</small></span><span class="seta">›</span></button>
-      <button class="op" data-v="conta"><span class="em">🔢</span><span>Perco a conta das miçangas<small>e o desenho não sai igual à foto</small></span><span class="seta">›</span></button>
-      <button class="op" data-v="material"><span class="em">🛒</span><span>Não sei qual miçanga e linha comprar</span><span class="seta">›</span></button>
-      <button class="op" data-v="mole"><span class="em">🫠</span><span>O brinco fica mole e dobra na orelha</span><span class="seta">›</span></button>
+      <button class="op" data-v="nunca"><span class="em">🌱</span><span>Nunca fiz nada parecido<small>nem sei por onde começar</small></span><span class="seta">›</span></button>
+      <button class="op" data-v="dificil"><span class="em">🔢</span><span>Parece difícil demais<small>tanta miçanga, tanta cor</small></span><span class="seta">›</span></button>
+      <button class="op" data-v="material"><span class="em">🛒</span><span>Não sei que material comprar</span><span class="seta">›</span></button>
+      <button class="op" data-v="caseiro"><span class="em">😬</span><span>Medo de ficar com cara de feito em casa</span><span class="seta">›</span></button>
       <button class="op" data-v="dom"><span class="em">🤷‍♀️</span><span>Acho que não tenho dom nem paciência</span><span class="seta">›</span></button>
     </div>
   </section>
@@ -545,39 +551,38 @@
       </div>
     </div>
 
-    <!-- 1. a história, em linha do tempo -->
-    <p class="gancho" id="c-abre"><b>Deixa eu te contar uma coisa que quase ninguém fala sobre brinco de miçanga.</b></p>
-    <ol class="tempo">
-      <li><span class="ti">😍</span><div>Você vê uma moça com um brinco de miçanga lindo, pergunta onde ela comprou… e ela responde: <i>"fui eu que fiz"</i>.</div></li>
-      <li><span class="ti">📱</span><div>Dá aquela vontade. Você salva o vídeo, procura um tutorial, separa a miçanga.</div></li>
-      <li><span class="ti">😩</span><div>E trava. A primeira fileira sai torta. Você pausa o vídeo, volta, pausa de novo. <b>Perde a conta.</b></div></li>
-      <li><span class="ti">💭</span><div>Lá pela segunda fileira a peça já não parece com a da foto, e vem o pensamento: <span class="marca-texto">"isso não é para mim, eu não tenho dom".</span></div></li>
-    </ol>
-    <div class="virada">Só que o problema <b>nunca foi você.</b></div>
-
-    <!-- 2. o mecanismo -->
-    <h2 class="tit">O vídeo mostra a mão. <span class="script cr">Não mostra a conta.</span></h2>
-    <p class="corpo">Tutorial de brinco de miçanga mostra a mão da artesã passando a agulha, rápido, de um ângulo que você não enxerga. Ela já sabe de cabeça onde vai cada cor. <b>Você não.</b></p>
-    <div class="versus">
-      <div class="vs ruim">
-        <span class="vs-rot">📱 Tutorial em vídeo</span>
-        <ul><li>Mostra a mão, não a conta</li><li>Você pausa, volta e perde a fileira</li><li>A peça sai diferente da foto</li></ul>
-      </div>
-      <div class="vs bom">
-        <span class="vs-rot">📄 Gráfico contado</span>
-        <ul><li>Cada miçanga na cor certa</li><li>Para e volta de onde parou</li><li>O par sai idêntico</li></ul>
-      </div>
+    <!-- 1. dores abertas (modeladas na seção de dores da index validada) -->
+    <p class="gancho" id="c-abre"><b>Deixa eu te contar uma coisa sobre brinco de miçanga.</b></p>
+    <h2 class="tit">Acha lindo, mas acha que <span class="script cr">não é para você?</span></h2>
+    <p class="corpo" style="text-align:center">Não é falta de jeito. É que quase tudo que se acha por aí sobre brinco de miçanga é <b>foto bonita sem instrução nenhuma.</b></p>
+    <div class="dores3">
+      <div><span class="di">📌</span><b>Foto bonita, nenhuma explicação</b><small>Você salva o modelo, volta nele depois e continua sem saber por onde começar. A imagem mostra o resultado, nunca o caminho.</small></div>
+      <div><span class="di">🔍</span><b>Não dá para enxergar a contagem</b><small>Ampliar a foto não resolve: as miçangas somem, você perde a conta das fileiras e fica no chute.</small></div>
+      <div><span class="di">🎨</span><b>A peça não fica igual à foto</b><small>Você compra a cor no palpite, gasta o material e o brinco sai diferente do que te encantou.</small></div>
     </div>
+    <div class="virada">Parece difícil de longe, mas brinco de miçanga é <b>seguir um desenho.</b> Quem faz não tem dom: tem o gráfico na mão.</div>
+
+    <!-- 2. como funciona, sem comparar com vídeo -->
     <div class="cartao-mec">
       <span class="cm-rot">✚ Igual ponto-cruz</span>
-      <p>Brinco de miçanga é <b>uma grade contada</b>. Cada quadradinho é uma miçanga. Errou uma, o desenho inteiro anda de lugar. <b>Por isso a sua saiu diferente da foto.</b></p>
+      <p>Brinco de miçanga é <b>uma grade</b>. Cada quadradinho é uma miçanga, cada cor já vem marcada. Você segue a fileira, conta e vai. <b>Não precisa criar nada.</b></p>
     </div>
-    <p class="corpo">Quando você tem o gráfico na sua frente, com cada miçanga na cor certa, a história muda:</p>
+    <p class="corpo">Com o gráfico na sua frente:</p>
     <div class="beneficios">
       <div><span>🧠</span>Não precisa decorar nada: é olhar a fileira e contar.</div>
       <div><span>⏸️</span>Pode parar no meio e voltar amanhã exatamente de onde parou.</div>
       <div><span>🪞</span>O segundo brinco sai idêntico ao primeiro: é o mesmo gráfico espelhado.</div>
       <div><span>🔍</span>Dá para seguir pelo celular, ampliando o gráfico com os dedos.</div>
+    </div>
+
+    <!-- desejo (seção "Imagine ouvir" da index) -->
+    <h2 class="tit">Imagine ouvir <span class="script cr">"onde você comprou?"</span></h2>
+    <p class="corpo" style="text-align:center">E poder responder: <b>fui eu que fiz</b>. Esse é o momento que faz valer cada fileira.</p>
+    <div class="beneficios usos">
+      <div><span>💃</span><b>Para usar</b>Um brinco que ninguém mais tem, na cor exata da roupa que você ama.</div>
+      <div><span>🎁</span><b>Para presentear</b>Presente artesanal vale por dez comprados, e ninguém esquece quem deu.</div>
+      <div><span>💰</span><b>Para vender</b>Brinco de miçanga tem saída o ano inteiro e o material custa pouco por peça.</div>
+      <div><span>✨</span><b>Para relaxar</b>Uma hora tecendo e a cabeça desliga. Muita gente começa por isso e não larga mais.</div>
     </div>
     <div class="citacao">Brinco de miçanga não se desenha. <b>Se conta.</b></div>
 
@@ -624,11 +629,11 @@
     <h2 class="tit">"Mas e se eu…"</h2>
     <p class="corpo" style="text-align:center">As dúvidas que mais aparecem de quem está começando. Todas têm resposta dentro do material:</p>
     <div class="objecoes">
-      <div class="obj"><span class="oi">🧵</span><div><b>…travar na primeira fileira?</b><span>É onde quase todo mundo desiste. No gráfico ela vem desenhada miçanga por miçanga, e os passos 1 a 3 mostram o começo em desenho: o nó, a primeira linha e como virar.</span></div></div>
-      <div class="obj"><span class="oi">🛒</span><div><b>…comprar a miçanga e a linha erradas?</b><span>Cada projeto lista o que aquele modelo pede, e a legenda dá o nome de cada cor. A Tabela de Conversão de Cores e a Lista de Compras dizem o que pedir na loja ou na internet. Funciona com miçanga nacional ou importada.</span></div></div>
-      <div class="obj"><span class="oi">🫠</span><div><b>…o brinco ficar mole e dobrar na orelha?</b><span>Isso é tensão de linha e arremate. O Guia de Acabamento Profissional mostra a tensão certa, o arremate que não solta e como esconder o nó.</span></div></div>
+      <div class="obj"><span class="oi">🌱</span><div><b>…nunca ter feito nada de artesanato?</b><span>Comece pelos 15 modelos de nível fácil, com poucas cores e desenho simples. Os passos 1 a 3 mostram o começo em desenho: o primeiro nó, a primeira linha e como virar.</span></div></div>
+      <div class="obj"><span class="oi">🛒</span><div><b>…não saber que material comprar?</b><span>Cada projeto lista o que aquele modelo pede, e a legenda dá o nome de cada cor. A Tabela de Conversão de Cores e a Lista de Compras dizem o que pedir na loja ou na internet. Funciona com miçanga nacional ou importada.</span></div></div>
+      <div class="obj"><span class="oi">😬</span><div><b>…ficar com cara de feito em casa?</b><span>O Guia de Acabamento Profissional mostra a tensão certa da linha, o arremate que não solta e como esconder o nó. É o detalhe que faz a peça parecer de loja.</span></div></div>
       <div class="obj"><span class="oi">📏</span><div><b>…a linha acabar no meio?</b><span>Cada projeto já diz quanto de linha cortar antes de começar.</span></div></div>
-      <div class="obj"><span class="oi">📱</span><div><b>…eu só aprender vendo?</b><span>O vídeo corre e mostra a mão. A página fica parada no ponto onde você está, com cada passo desenhado. Você vai no seu ritmo, quantas vezes precisar.</span></div></div>
+      <div class="obj"><span class="oi">📱</span><div><b>…eu precisar ver alguém fazendo?</b><span>Cada passo vem desenhado e fica parado na página, esperando você. Você vai no seu ritmo, quantas vezes precisar.</span></div></div>
     </div>
 
     <!-- 5. vender -->
@@ -785,16 +790,16 @@
 
   // textos que mudam conforme a resposta
   var TRAVA = {
-    comeco: 'Você disse que <b>não sabe por onde começar</b>. É justamente a primeira fileira que o gráfico resolve: ela vem desenhada miçanga por miçanga, e os passos ilustrados mostram o nó e a primeira linha.',
-    conta: 'Você disse que <b>perde a conta e o desenho não sai igual</b>. Isso acontece quando se tenta copiar de foto ou vídeo. Com a grade, cada fileira tem a quantidade certa de cada cor, e o par sai idêntico.',
-    material: 'Você disse que <b>não sabe qual miçanga e linha comprar</b>. Cada projeto traz a lista do que aquele modelo pede e o nome de cada cor, para você comprar certo de primeira.',
-    mole: 'Você disse que <b>o brinco fica mole e dobra</b>. Isso é tensão de linha e arremate, e tem um guia só sobre acabamento que mostra como deixar a peça firme, com cara de loja.',
-    dom: 'Você disse que <b>acha que não tem dom</b>. A boa notícia: não precisa. Quem segue a grade não está desenhando, está contando. E dá para começar pelos modelos fáceis, de poucas cores.'
+    nunca: 'Você disse que <b>nunca fez nada parecido</b>. Perfeito: a coleção começa por 15 modelos de nível fácil, com poucas cores, pensados para a primeira peça da vida. Você não precisa saber nada antes.',
+    dificil: 'Você disse que <b>parece difícil demais</b>. De longe parece, mas é só seguir o desenho: cada miçanga já vem marcada na cor certa, fileira por fileira. Você não cria nada, só conta.',
+    material: 'Você disse que <b>não sabe que material comprar</b>. Cada projeto traz a lista do que aquele modelo pede e o nome de cada cor, para você comprar certo de primeira.',
+    caseiro: 'Você disse que tem <b>medo de ficar com cara de feito em casa</b>. O segredo está no acabamento, e tem um guia só sobre isso: o arremate firme e o detalhe que faz a peça parecer de loja.',
+    dom: 'Você disse que <b>acha que não tem dom</b>. A boa notícia: não precisa. Quem segue o gráfico não está desenhando, está contando. E dá para começar pelos modelos fáceis, de poucas cores.'
   };
   var APRENDER = {
     folha: '📄 Você aprende melhor <b>no seu ritmo, com o desenho na frente</b>. É exatamente o formato da coleção: cada passo fica parado ali, esperando você.',
-    video: '📱 Você gosta de vídeo, mas sabe o que acontece: <b>o vídeo corre e mostra a mão, não a contagem</b>. Com o gráfico, você vê cada miçanga e não precisa ficar pausando e voltando.',
-    aovivo: '👩‍🏫 Você acha que só aprende vendo alguém fazer. Mas repara: o que você precisa ver não é a mão, é <b>onde vai cada miçanga</b>. Isso o gráfico mostra melhor que qualquer vídeo, e os 7 passos são desenhados um a um.'
+    video: '📱 Você gosta de aprender vendo. Aqui <b>cada passo vem desenhado</b>, do primeiro nó ao arremate, e fica parado na página no seu ritmo, sem precisar ficar pausando nada.',
+    aovivo: '👩‍🏫 Você gosta de ver alguém fazendo. Aqui <b>os 7 passos vêm desenhados um a um</b>, e o gráfico mostra onde vai cada miçanga. É como ter alguém do seu lado apontando a próxima.'
   };
   var ORC = {
     '20': 'Com o seu orçamento de até R$ 20 você já compra material para o primeiro par e ainda sobra.',
@@ -804,7 +809,7 @@
   };
   function preencherInfo() {
     document.getElementById('mec-intro').innerHTML = (nome ? nome + ', b' : 'B') + 'rinco de miçanga <b>não se desenha. Se conta.</b>';
-    document.getElementById('mec-trava').innerHTML = TRAVA[resp.trava] || TRAVA.comeco;
+    document.getElementById('mec-trava').innerHTML = TRAVA[resp.trava] || TRAVA.nunca;
     document.getElementById('mec-aprender').innerHTML = APRENDER[resp.aprender] || APRENDER.folha;
     document.getElementById('custo-orc').textContent = ORC[resp.orcamento] || '';
   }
