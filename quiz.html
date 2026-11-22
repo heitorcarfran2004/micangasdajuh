@@ -241,6 +241,45 @@
   .fixo{position:fixed;left:0;right:0;bottom:0;background:rgba(253,249,244,.96);backdrop-filter:blur(6px);border-top:1px solid var(--borda);padding:10px 16px;z-index:30;transform:translateY(110%);visibility:hidden;transition:transform .3s,visibility .3s}
   .fixo.mostra{transform:none;visibility:visible}
   .fixo .btn{max-width:520px;margin:0 auto;padding:14px;font-size:16px}
+
+  /* foto da tela do mecanismo: proporção perto do quadrado, sem esticar */
+  .foto-arred img{width:100%;height:auto;aspect-ratio:5/4;object-fit:cover;object-position:50% 50%}
+
+  /* seta "role para baixo": some quando chega no fim */
+  .descer{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:29;width:46px;height:46px;border-radius:50%;border:0;cursor:pointer;
+    background:var(--coral);color:#fff;display:grid;place-items:center;box-shadow:0 6px 18px rgba(229,68,110,.45);opacity:0;pointer-events:none;transition:opacity .3s,bottom .3s}
+  .descer svg{width:22px;height:22px}
+  .descer.on{opacity:.95;pointer-events:auto;animation:quica 1.4s ease-in-out infinite}
+  .descer.alto{bottom:88px}
+  @keyframes quica{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+
+  /* TSL enxuta */
+  .faixa{position:sticky;top:0;z-index:25;margin:-22px -16px 18px;background:var(--coral);color:#fff;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:11px 16px;font-size:13.5px;letter-spacing:.2px}
+  .faixa .relogio{background:#fff;color:var(--coral);padding:3px 9px;border-radius:7px;font-variant-numeric:tabular-nums;margin-left:4px}
+  .gancho{font-size:17px;text-align:center;margin:24px 6px 0;line-height:1.5}
+  .tsl h2.tit{margin:36px 0 14px}
+  .versus{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .vs{border-radius:16px;padding:14px 12px}
+  .vs.ruim{background:#F4EEE8;color:var(--cinza)}
+  .vs.bom{background:var(--turq-nevoa);border:2px solid var(--turq);color:var(--tinta)}
+  .vs-rot{display:block;font-weight:800;font-size:13.5px;margin-bottom:9px;color:var(--tinta)}
+  .vs ul{list-style:none;display:grid;gap:8px;font-size:13.5px;line-height:1.35}
+  .vs li{display:flex;gap:6px}
+  .vs.ruim li:before{content:"✕";color:#C0563F;font-weight:800}
+  .vs.bom li:before{content:"✓";color:var(--verde);font-weight:800}
+  .tsl .citacao{border:0;text-align:center;background:var(--coral-nevoa);border-radius:14px;padding:14px;margin-top:14px;font-size:19px}
+  .tsl .citacao b{color:var(--coral)}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  .stats div{background:#fff;border:1px solid var(--borda);border-radius:14px;padding:10px 4px;text-align:center}
+  .stats b{display:block;font-size:22px;color:var(--coral);font-weight:800;line-height:1.1}
+  .stats span{display:block;font-size:11.5px;color:var(--cinza);line-height:1.2;margin-top:2px}
+  .tsl .objecoes{gap:9px}
+  .tsl .obj{display:flex;gap:12px;align-items:center;padding:12px 14px}
+  .tsl .obj .oi{font-size:24px;flex:none}
+  .tsl .obj b{font-size:15px;margin:0}
+  .tsl .obj span{font-size:14px}
+  .tsl details{margin-top:8px}
+  .tsl .ps{margin-top:26px}
 </style>
 </head>
 <body>
@@ -452,6 +491,12 @@
   <!-- ================= RESULTADO + TSL ================= -->
   <section class="tela tsl" data-t="tsl" id="tsl">
 
+    <!-- faixa de promoção com timer (começa em 13:27) -->
+    <div class="faixa">
+      <b>🔥 PROMOÇÃO IMPERDÍVEL</b>
+      <span>Termina em <b class="relogio">13:27</b></span>
+    </div>
+
     <div class="resultado">
       <span class="rot">Seu resultado</span>
       <h2 id="r-titulo">Você tem perfil para fazer brincos de miçanga</h2>
@@ -461,38 +506,35 @@
         <div><b id="r-desenho">Seu primeiro brinco: Arara</b><span id="r-plano"></span></div>
       </div>
       <div class="medidores">
-        <div class="medidor">Chance de acertar o primeiro par seguindo o gráfico<div><i style="width:92%"></i></div></div>
+        <div class="medidor">Chance de acertar o 1º par com o gráfico<div><i style="width:92%"></i></div></div>
         <div class="medidor">Custo para começar<div><i style="width:18%;background:#7EE2A8"></i></div></div>
-        <div class="medidor" id="r-med3">Tempo até o primeiro par<div><i style="width:35%;background:#9EE0E8"></i></div></div>
       </div>
     </div>
 
-    <div class="carta">
-      <p id="c-abre"><b>Deixa eu te contar uma coisa que quase ninguém fala sobre brinco de miçanga.</b></p>
+    <p class="gancho" id="c-abre">Sabe quando perguntam <i>"onde você comprou?"</i> e a resposta é <b>"fui eu que fiz"</b>? É aí que você vai chegar.</p>
 
-      <p>Sabe quando você vê uma moça com um brinco de miçanga lindo, pergunta onde ela comprou… e ela responde <i>"fui eu que fiz"</i>?</p>
-      <p>Na hora dá aquela vontade. Você salva o vídeo, procura um tutorial, separa a miçanga.</p>
-      <p>E aí trava.</p>
-      <p>A primeira fileira sai torta. Você pausa o vídeo, volta, pausa de novo. Perde a conta. Lá pela segunda fileira a peça já não parece com a da foto, e vem aquele pensamento: <span class="marca-texto">"isso não é para mim, eu não tenho dom".</span></p>
-      <p class="grifo">Só que o problema nunca foi você.</p>
-
-      <h2>O vídeo mostra a mão. <span class="script cr">Não mostra a conta.</span></h2>
-      <p>Tutorial de brinco de miçanga mostra a mão da artesã passando a agulha, rápido, de um ângulo que você não enxerga. Ela já sabe de cabeça onde vai cada cor. Você não.</p>
-      <p>E brinco de miçanga é exatamente isso: <b>uma grade contada</b>. Igual ponto-cruz. Cada quadradinho é uma miçanga. Errou uma, o desenho inteiro anda de lugar. Por isso a sua saiu diferente da foto.</p>
-      <p>Quando você tem o gráfico na sua frente, com cada miçanga na cor certa, a história muda:</p>
-      <ul class="checks">
-        <li>Você não precisa decorar nada: é olhar a fileira e contar.</li>
-        <li>Pode parar no meio e voltar amanhã exatamente de onde parou.</li>
-        <li>O segundo brinco sai idêntico ao primeiro, porque ele é o mesmo gráfico espelhado.</li>
-        <li>Dá para seguir pelo celular, ampliando o gráfico com os dedos.</li>
-      </ul>
-      <div class="citacao">Brinco de miçanga não se desenha. Se conta.</div>
-
-      <h2>Foi por isso que montamos <span class="script cr">a coleção</span></h2>
-      <p>São <b>100 projetos de brincos de miçanga</b>, cada um numa página completa: a foto do par pronto, o gráfico em destaque, a legenda de cores, a lista de materiais e os 7 passos ilustrados, do primeiro nó ao arremate.</p>
-      <p>Tem arara, onça, borboleta, tucano, beija-flor, pavão, bandeira do Brasil, olho grego, folha tropical e os geométricos de franja. São 15 modelos de nível fácil para a primeira peça da vida, 47 de nível médio e 38 avançados para quando pegar o jeito.</p>
+    <!-- por que travou: comparativo visual em vez de texto corrido -->
+    <h2 class="tit">Por que o seu <span class="script cr">travou até hoje</span></h2>
+    <div class="versus">
+      <div class="vs ruim">
+        <span class="vs-rot">📱 Tutorial em vídeo</span>
+        <ul><li>Mostra a mão, não a conta</li><li>Você pausa, volta e perde a fileira</li><li>A peça sai diferente da foto</li></ul>
+      </div>
+      <div class="vs bom">
+        <span class="vs-rot">📄 Gráfico contado</span>
+        <ul><li>Cada miçanga na cor certa</li><li>Para e volta de onde parou</li><li>O par sai idêntico</li></ul>
+      </div>
     </div>
+    <div class="citacao">Brinco de miçanga não se desenha. <b>Se conta.</b></div>
 
+    <!-- o produto -->
+    <h2 class="tit">100 projetos, <span class="script cr">1 página cada</span></h2>
+    <div class="stats">
+      <div><b>100</b><span>projetos</span></div>
+      <div><b>15</b><span>para iniciantes</span></div>
+      <div><b>7</b><span>passos ilustrados</span></div>
+      <div><b>∞</b><span>acesso vitalício</span></div>
+    </div>
     <div class="trilho amostras" id="amostras">
       <figure><img src="assets/amostras-sm/m10.webp" alt="Página do projeto Arara Vermelha" width="320" height="452" loading="lazy"></figure>
       <figure><img src="assets/amostras-sm/m13.webp" alt="Página do projeto Onça Pintada" width="320" height="452" loading="lazy"></figure>
@@ -505,26 +547,29 @@
       <figure><img src="assets/amostras-sm/m15.webp" alt="Página do projeto Pavão" width="320" height="452" loading="lazy"></figure>
       <figure><img src="assets/amostras-sm/m12.webp" alt="Página do projeto Folha Tropical" width="320" height="452" loading="lazy"></figure>
     </div>
-    <p class="nota">Arraste para o lado e veja como cada projeto é entregue.</p>
+    <p class="nota">Foto do par · gráfico · legenda de cores · materiais · 7 passos</p>
 
-    <div class="carta">
-      <h2>"Mas e se eu…"</h2>
-      <p>Essas são as dúvidas que mais aparecem de quem está começando. Todas têm resposta dentro do material:</p>
-      <div class="objecoes">
-        <div class="obj"><b>🧵 "…travar na primeira fileira?"</b><span>A primeira fileira é onde quase todo mundo desiste. No gráfico ela vem desenhada miçanga por miçanga, e os passos 1 a 3 mostram o começo em desenho: o nó, a primeira linha e como virar.</span></div>
-        <div class="obj"><b>🛒 "…comprar a miçanga e a linha erradas?"</b><span>Cada projeto lista o que aquele modelo pede, e a legenda dá o nome de cada cor. A Tabela de Conversão de Cores e a Lista de Compras dizem o que pedir na loja ou na internet, e funciona com miçanga nacional ou importada.</span></div>
-        <div class="obj"><b>🫠 "…o brinco ficar mole e dobrar na orelha?"</b><span>Isso é tensão de linha e arremate. O Guia de Acabamento Profissional mostra a tensão certa, o arremate que não solta e como esconder o nó.</span></div>
-        <div class="obj"><b>📏 "…a linha acabar no meio?"</b><span>Cada projeto já diz quanto de linha cortar antes de começar.</span></div>
-        <div class="obj"><b>📱 "…eu só aprender vendo?"</b><span>O vídeo corre e mostra a mão. A página fica parada no ponto onde você está, com cada passo desenhado. Você vai no seu ritmo, quantas vezes precisar.</span></div>
-      </div>
-
-      <h2>E quem quiser vender, <span class="script cr">vende</span></h2>
-      <p>Você viu os prints: o mesmo tipo de brinco que sai por menos de R$ 10 de material aparece à venda por R$ 70 a R$ 180. Tem gente vendendo para amiga, em feira, no status do WhatsApp, em lojinha.</p>
-      <p>Os brincos que você fizer são seus, para usar, dar ou vender. E na Coleção Completa vai junto o bônus <b>Como Precificar e Vender</b>, com a conta do custo real de cada peça e o que responder quando pedirem desconto.</p>
-
-      <h2>Na Coleção Completa, <span class="script cr">vão 6 bônus</span></h2>
+    <!-- objeções em cards curtos -->
+    <h2 class="tit">"Mas e se eu…"</h2>
+    <div class="objecoes">
+      <div class="obj"><span class="oi">🧵</span><div><b>travar na 1ª fileira?</b><span>Ela vem desenhada miçanga por miçanga.</span></div></div>
+      <div class="obj"><span class="oi">🛒</span><div><b>comprar material errado?</b><span>Todo projeto traz a lista e o nome de cada cor.</span></div></div>
+      <div class="obj"><span class="oi">🫠</span><div><b>o brinco ficar mole?</b><span>O guia de acabamento deixa a peça firme.</span></div></div>
+      <div class="obj"><span class="oi">📏</span><div><b>a linha acabar no meio?</b><span>Cada projeto diz quanto de linha cortar.</span></div></div>
+      <div class="obj"><span class="oi">📱</span><div><b>só aprender vendo?</b><span>A página para no seu passo, no seu ritmo.</span></div></div>
     </div>
 
+    <!-- vender -->
+    <h2 class="tit">E se quiser <span class="script cr">vender</span></h2>
+    <div class="conta">
+      <div class="lado custo"><span class="rot">Material</span><div class="val">R$ 8<small>por par</small></div></div>
+      <span class="seta">→</span>
+      <div class="lado venda"><span class="rot">À venda por</span><div class="val">R$ 70<small>a R$ 180</small></div></div>
+    </div>
+    <p class="nota">Os brincos que você fizer são seus: para usar, dar ou vender.</p>
+
+    <!-- bonus -->
+    <h2 class="tit">+6 bônus <span class="script cr">na Completa</span></h2>
     <div class="bonus-lista">
       <div class="bonus"><img src="assets/bonus-sm/b0-cristal.webp" alt="" width="400" height="225" loading="lazy"><div><b>30 Brincos de Cristal com Miçangas</b><s>R$ 47</s><em>GRÁTIS</em></div></div>
       <div class="bonus"><img src="assets/bonus-sm/b1-cores.webp" alt="" width="400" height="225" loading="lazy"><div><b>Tabela de Conversão de Cores</b><s>R$ 37</s><em>GRÁTIS</em></div></div>
@@ -534,10 +579,9 @@
       <div class="bonus"><img src="assets/bonus-sm/b5-compras.webp" alt="" width="400" height="225" loading="lazy"><div><b>Lista de Compras da Iniciante</b><s>R$ 29</s><em>GRÁTIS</em></div></div>
     </div>
 
-    <div class="carta">
-      <h2 id="oferta">O seu plano <span class="script cr">liberado hoje</span></h2>
-      <p id="c-oferta">Pagamento único. Sem mensalidade. Você recebe no e-mail assim que o pagamento é aprovado.</p>
-    </div>
+    <!-- oferta -->
+    <h2 class="tit" id="oferta">O seu plano <span class="script cr">liberado hoje</span></h2>
+    <p class="nota" id="c-oferta">Pagamento único. Sem mensalidade.</p>
 
     <div class="planos">
       <div class="plano top">
@@ -546,7 +590,7 @@
         <div class="de"><s>R$ 99,90</s><span class="eco">Economize R$ 72</span></div>
         <div class="preco"><small>R$</small>27,90</div>
         <p class="obs">Os 100 projetos + os 6 bônus</p>
-        <div class="timer">⏱ O seu resultado expira em <b id="relogio">09:59</b></div>
+        <div class="timer">⏱ A promoção termina em <b class="relogio">13:27</b></div>
         <ul>
           <li>Os 100 projetos completos</li>
           <li>Gráfico, legenda de cores e materiais</li>
@@ -576,22 +620,18 @@
 
     <div class="garantia">
       <div class="selo"><div><b>7</b><span>dias</span></div></div>
-      <div><h3>O risco é todo nosso</h3><p>Baixe, escolha um projeto e faça. Se em 7 dias achar que não era para você, é só mandar um e-mail e devolvemos cada centavo. Sem perguntas.</p></div>
+      <div><h3>O risco é todo nosso</h3><p>Não gostou em 7 dias? Um e-mail e devolvemos cada centavo. Sem perguntas.</p></div>
     </div>
 
-    <div class="carta">
-      <h2>Perguntas que <span class="script tq">sempre chegam</span></h2>
-    </div>
-    <details open><summary>Nunca fiz brinco de miçanga. Consigo?</summary><p>Consegue. São 15 projetos de nível fácil, com poucas cores e desenho simples, pensados para a primeira peça da vida. Cada página traz os 7 passos ilustrados, do primeiro nó ao arremate.</p></details>
-    <details><summary>Já faço pulseira e colar. Vale para mim?</summary><p>Vale, e você vai andar rápido. Brinco usa a mesma miçanga, só que tecida em fileiras que formam desenho. Com o gráfico você já começa por um modelo que gosta, no nível que quiser.</p></details>
-    <details><summary>Que material eu preciso?</summary><p>Miçanga de vidro miúda (11/0), linha própria para miçanga, agulha fina e o par de ganchos. Cada projeto lista o que aquele modelo pede e a legenda diz quais cores comprar. A Lista de Compras da Iniciante (bônus) diz as quantidades para começar sem desperdiçar.</p></details>
-    <details><summary>Preciso de impressora?</summary><p>Não. As páginas são em A4 e ficam boas impressas, mas dá para seguir tudo pelo celular ou tablet, ampliando o gráfico com os dedos.</p></details>
-    <details><summary>Como recebo?</summary><p>É digital. Assim que o pagamento é aprovado, o acesso chega no seu e-mail, em geral em menos de 2 minutos. O acesso não expira.</p></details>
-    <details><summary>Posso vender os brincos que eu fizer?</summary><p>Pode. O que não pode é revender ou distribuir os arquivos. As peças que saem das suas mãos são suas.</p></details>
-    <details><summary>E se eu não gostar?</summary><p>Você tem 7 dias para pedir o reembolso integral, por e-mail, sem precisar explicar o motivo.</p></details>
+    <h2 class="tit">Dúvidas</h2>
+    <details><summary>Nunca fiz brinco de miçanga. Consigo?</summary><p>Consegue. São 15 projetos de nível fácil, com poucas cores, pensados para a primeira peça da vida, e cada página traz os 7 passos ilustrados.</p></details>
+    <details><summary>Que material eu preciso?</summary><p>Miçanga de vidro miúda (11/0), linha para miçanga, agulha fina e o par de ganchos. Cada projeto lista o que aquele modelo pede, e a Lista de Compras (bônus) diz as quantidades.</p></details>
+    <details><summary>Preciso de impressora?</summary><p>Não. Dá para seguir tudo pelo celular, ampliando o gráfico com os dedos.</p></details>
+    <details><summary>Como recebo?</summary><p>Por e-mail, assim que o pagamento é aprovado, em geral em menos de 2 minutos. O acesso não expira.</p></details>
+    <details><summary>Posso vender os brincos que eu fizer?</summary><p>Pode. Só não pode revender ou distribuir os arquivos.</p></details>
 
-    <div class="ps" id="ps"><b>P.S.</b> Lembra daquela moça que respondeu "fui eu que fiz"? Na próxima vez, quem responde é você. Seu primeiro par pode sair ainda esta semana.</div>
-    <div class="acao"><a href="https://pay.wiapy.com/kFm3AD8-UpdZ" class="btn pulsa">QUERO A COLEÇÃO COMPLETA POR R$ 27,90</a></div>
+    <div class="ps"><b>P.S.</b> Da próxima vez que perguntarem "onde você comprou?", quem responde "fui eu que fiz" é você.</div>
+    <div class="acao"><a href="https://pay.wiapy.com/kFm3AD8-UpdZ" class="btn pulsa">QUERO A COLEÇÃO POR R$ 27,90</a></div>
 
     <footer>
       <b>Coleção de Brincos de Miçanga</b><br>
@@ -599,6 +639,8 @@
     </footer>
   </section>
 </main>
+
+<button class="descer" id="descer" type="button" aria-label="Rolar para baixo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
 
 <div class="fixo" id="fixo"><a href="#oferta" class="btn" id="fixo-btn">QUERO MEU PLANO POR R$ 27,90</a></div>
 
@@ -713,9 +755,8 @@
     document.getElementById('r-img').src = 'assets/quiz/' + d[1] + '.webp';
     document.getElementById('r-desenho').textContent = 'Seu primeiro brinco: ' + d[0];
     document.getElementById('r-plano').textContent = 'Começando pelo nível certo, com ' + (TEMPO[resp.tempo] || TEMPO.medio) + '. Objetivo: ' + (OBJ[resp.objetivo] || OBJ.usar) + '.';
-    var abre = document.getElementById('c-abre');
-    abre.innerHTML = '<b>' + (nome ? nome + ', deixa' : 'Deixa') + ' eu te contar uma coisa que quase ninguém fala sobre brinco de miçanga.</b>';
-    document.getElementById('c-oferta').textContent = 'Pagamento único. Sem mensalidade. ' + (nome ? nome + ', você' : 'Você') + ' recebe no e-mail assim que o pagamento é aprovado, e já pode começar pel' + (resp.desenho === 'onca' ? 'a ' : 'o ') + d[0].toLowerCase() + '.';
+    document.getElementById('c-abre').innerHTML = (nome ? nome + ', sabe' : 'Sabe') + ' quando perguntam <i>"onde você comprou?"</i> e a resposta é <b>"fui eu que fiz"</b>? É aí que você vai chegar.';
+    document.getElementById('c-oferta').textContent = 'Pagamento único, sem mensalidade. Chega no seu e-mail na hora, e você já começa pel' + (resp.desenho === 'onca' ? 'a ' : 'o ') + d[0].toLowerCase() + '.';
     relogio(); botaoFixo();
   }
 
@@ -723,8 +764,12 @@
   var relogioOn = false;
   function relogio() {
     if (relogioOn) return; relogioOn = true;
-    var s = 599, el = document.getElementById('relogio');
-    setInterval(function () { if (s > 0) s--; el.textContent = String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0'); }, 1000);
+    var s = 13 * 60 + 27, els = document.querySelectorAll('.relogio');
+    setInterval(function () {
+      if (s > 0) s--;
+      var t = String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0');
+      els.forEach(function (el) { el.textContent = t; });
+    }, 1000);
   }
 
   // botao fixo aparece depois do resultado, some na area dos planos
@@ -739,6 +784,20 @@
       e.preventDefault(); document.getElementById('oferta').scrollIntoView({ behavior: 'smooth' });
     });
   }
+
+  // seta "role para baixo": aparece enquanto ainda tem página abaixo, some no fim
+  var seta = document.getElementById('descer'), fixoEl = document.getElementById('fixo');
+  function setaDescer() {
+    var falta = document.documentElement.scrollHeight - scrollY - innerHeight;
+    var t = telas[atual].dataset.t;
+    seta.classList.toggle('on', falta > 140 && t !== 'carrega');
+    seta.classList.toggle('alto', fixoEl.classList.contains('mostra'));
+  }
+  seta.addEventListener('click', function () { scrollBy({ top: innerHeight * 0.7, behavior: 'smooth' }); });
+  addEventListener('scroll', setaDescer, { passive: true });
+  addEventListener('resize', setaDescer);
+  document.querySelectorAll('img').forEach(function (im) { im.addEventListener('load', setaDescer); });
+  setInterval(setaDescer, 800);
 
   // checkout nao dispara o back redirect
   document.querySelectorAll('a[href*="pay.wiapy.com"]').forEach(function (a) {
